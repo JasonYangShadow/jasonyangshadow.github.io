@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>self-host on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/self-host/</link>
+    <link>https://jasonyangshadow.github.io/tags/self-host/</link>
     <description>Recent content in self-host on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 11 Aug 2018 12:06:53 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/self-host/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/self-host/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>The first post</title>
-      <link>https://jasonyangshadow.win/posts/the-first-post/</link>
+      <link>https://jasonyangshadow.github.io/posts/the-first-post/</link>
       <pubDate>Sat, 11 Aug 2018 12:06:53 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/the-first-post/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/the-first-post/</guid>
       <description>Moving to self-host server at last I find that I have a free raspberry pi 3+ machine, so let&amp;rsquo;s build self-host server. Prerequisite: 1. raspberry pi 3+ 2. public ip(if you use uqmobile wifi router, open service by the following guide https://www.uqwimax.jp/plan/wimax/option/global_ip/ Install apache2, mysql, php, wordpress on raspberry pi and configure them properly, you may refer this manual: https://projects.raspberrypi.org/en/projects/lamp-web-server-with-wordpress If ssl is required, using letsencrpyt https://letsencrypt.org/ to automatically generate ssl certificate for the website without charge.</description>
     </item>
     

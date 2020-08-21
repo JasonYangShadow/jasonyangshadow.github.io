@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rootless on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/rootless/</link>
+    <link>https://jasonyangshadow.github.io/tags/rootless/</link>
     <description>Recent content in rootless on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 13 Apr 2019 15:02:53 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/rootless/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/rootless/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>containerized centos 7 issues and solutions</title>
-      <link>https://jasonyangshadow.win/posts/containerized-centos-7-issues-and-solutions/</link>
+      <link>https://jasonyangshadow.github.io/posts/containerized-centos-7-issues-and-solutions/</link>
       <pubDate>Sat, 13 Apr 2019 15:02:53 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/containerized-centos-7-issues-and-solutions/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/containerized-centos-7-issues-and-solutions/</guid>
       <description>Just make containerized centos 7 run properly in LPMX. Issue 1: Error during &amp;lsquo;yum update&amp;rsquo;
  error: db5 error(5) from dbenv-&amp;gt;open: Input/output error error: cannot open Packages index using db5 - Input/output error (5) error: cannot open Packages database in /var/lib/rpm CRITICAL:yum.main: Error: rpmdb open failed Solution 1: Rebuild rpm db
  rm -f /var/lib/rpm/__db* db_verify /var/lib/rpm/Packages rpm --rebuilddb yum clean all Issue 2: Error during &amp;lsquo;yum install xxx&amp;rsquo;
@@ -26,10 +26,10 @@
     
     <item>
       <title>compiling LPMX&#39;s dependencies on centos 5.5</title>
-      <link>https://jasonyangshadow.win/posts/compiling-lpmxs-dependencies-on-centos-5-5/</link>
+      <link>https://jasonyangshadow.github.io/posts/compiling-lpmxs-dependencies-on-centos-5-5/</link>
       <pubDate>Tue, 02 Apr 2019 11:32:33 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/compiling-lpmxs-dependencies-on-centos-5-5/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/compiling-lpmxs-dependencies-on-centos-5-5/</guid>
       <description>LPMX is a pure composable rootless container system. It runs purely in rootless mode and is designed for running under restricted environments such as grid infrastructure and batch system, where end-users could not get root privileges. LPMX itself is developed using golang and could be easily compiled and deployed acroos different platforms. However, its dependencis including fakechroot, fakeroot and memcached related stuff have to be recompiled. Here I use centos 5.</description>
     </item>
     

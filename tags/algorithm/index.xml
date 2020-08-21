@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>algorithm on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/algorithm/</link>
+    <link>https://jasonyangshadow.github.io/tags/algorithm/</link>
     <description>Recent content in algorithm on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Thu, 23 Jan 2020 22:52:16 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Next Closest Time</title>
-      <link>https://jasonyangshadow.win/posts/next-closest-time/</link>
+      <link>https://jasonyangshadow.github.io/posts/next-closest-time/</link>
       <pubDate>Thu, 23 Jan 2020 22:52:16 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/next-closest-time/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/next-closest-time/</guid>
       <description>Next Closest Time Given a time represented in the format &amp;ldquo;HH:MM&amp;rdquo;, form the next closest time by reusing the current digits. There is no limit on how many times a digit can be reused.
 You may assume the given input string is always valid. For example, &amp;ldquo;01:34&amp;rdquo;, &amp;ldquo;12:09&amp;rdquo; are all valid. &amp;ldquo;1:34&amp;rdquo;, &amp;ldquo;12:9&amp;rdquo; are all invalid.
 Example 1:

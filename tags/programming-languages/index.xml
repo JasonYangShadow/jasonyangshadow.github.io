@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>programming languages on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/programming-languages/</link>
+    <link>https://jasonyangshadow.github.io/tags/programming-languages/</link>
     <description>Recent content in programming languages on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Fri, 26 Apr 2019 10:15:17 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Review of new features of C&#43;&#43; 11/14/17 before C&#43;&#43; 20 comes</title>
-      <link>https://jasonyangshadow.win/posts/review-of-new-features-of-c-11-14-17-before-c-20-comes/</link>
+      <link>https://jasonyangshadow.github.io/posts/review-of-new-features-of-c-11-14-17-before-c-20-comes/</link>
       <pubDate>Fri, 26 Apr 2019 10:15:17 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/review-of-new-features-of-c-11-14-17-before-c-20-comes/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/review-of-new-features-of-c-11-14-17-before-c-20-comes/</guid>
       <description>From C++ 11, it comes with tons of new features, and makes C++ an absolute new langauage. Honestly speaking, my knowledge on C++ still stops in the year of 2008. Recently, golang is popular and it could replace part of C++ to some extend for the development of distributed system.
 But we should keep learning? Isn&amp;rsquo;t it?. Just find one github repo, which lists all most of new features of C++ 11/14/17.</description>
     </item>

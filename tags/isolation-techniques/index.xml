@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>isolation techniques on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/isolation-techniques/</link>
+    <link>https://jasonyangshadow.github.io/tags/isolation-techniques/</link>
     <description>Recent content in isolation techniques on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Thu, 27 Feb 2020 08:21:26 +0900</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/isolation-techniques/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/isolation-techniques/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Slides a Study of Security Isolation Techniques</title>
-      <link>https://jasonyangshadow.win/posts/slides-a-study-of-security-isolation-techniques/</link>
+      <link>https://jasonyangshadow.github.io/posts/slides-a-study-of-security-isolation-techniques/</link>
       <pubDate>Thu, 27 Feb 2020 08:21:26 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/slides-a-study-of-security-isolation-techniques/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/slides-a-study-of-security-isolation-techniques/</guid>
       <description>A slide made for paper introduction. Sharing a common study of security isolation techniques used in different implementations.
  </description>
     </item>

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>leetcode on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/leetcode/</link>
+    <link>https://jasonyangshadow.github.io/tags/leetcode/</link>
     <description>Recent content in leetcode on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Thu, 20 Aug 2020 12:55:59 +0900</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Split Array Largest Sum</title>
-      <link>https://jasonyangshadow.win/posts/split-array-largest-sum/</link>
+      <link>https://jasonyangshadow.github.io/posts/split-array-largest-sum/</link>
       <pubDate>Thu, 20 Aug 2020 12:55:59 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/split-array-largest-sum/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/split-array-largest-sum/</guid>
       <description>Given an array which consists of non-negative integers and an integer m, you can split the array into m non-empty continuous subarrays. Write an algorithm to minimize the largest sum among these m subarrays.
 Note: If n is the length of array, assume the following constraints are satisfied:
 1 ≤ n ≤ 1000 1 ≤ m ≤ min(50, n) Examples:
@@ -26,20 +26,20 @@ Input: nums = [7,2,5,10,8] m = 2 Output: 18 Explanation: There are four ways to 
     
     <item>
       <title>Magnetic Force Between Two Balls</title>
-      <link>https://jasonyangshadow.win/posts/magnetic-force-between-two-balls/</link>
+      <link>https://jasonyangshadow.github.io/posts/magnetic-force-between-two-balls/</link>
       <pubDate>Mon, 17 Aug 2020 01:52:55 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/magnetic-force-between-two-balls/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/magnetic-force-between-two-balls/</guid>
       <description>https://leetcode.com/problems/magnetic-force-between-two-balls/
 class Solution: def maxDistance(self, position: List[int], m: int) -&amp;gt; int: n = len(position) position.sort() #calculate how many balls can be put into basket #what we need is to find proper count(d) == m #if count(d) &amp;gt; m, meaning that d is too small otherwise, d is too large. def count(d): ans, cur = 1, position[0] for i in range(1, n): if position[i] - cur &amp;gt;= d: ans += 1 cur = position[i] return ans l, r = 0, position[-1] - position[0] #binary search while l &amp;lt; r: mid = r - (r-l) // 2 if count(mid) &amp;gt;= m: l = mid else: r = mid - 1 return l </description>
     </item>
     
     <item>
       <title>Minimum Number of Days to Eat N Oranges</title>
-      <link>https://jasonyangshadow.win/posts/minimum-number-of-days-to-eat-n-oranges/</link>
+      <link>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-eat-n-oranges/</link>
       <pubDate>Mon, 17 Aug 2020 01:03:08 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/minimum-number-of-days-to-eat-n-oranges/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-eat-n-oranges/</guid>
       <description>There are n oranges in the kitchen and you decided to eat some of these oranges every day as follows:
 Eat one orange. If the number of remaining oranges (n) is divisible by 2 then you can eat n/2 oranges. If the number of remaining oranges (n) is divisible by 3 then you can eat 2*(n/3) oranges. You can only choose one of the actions per day.
 Return the minimum number of days to eat n oranges.</description>
@@ -47,20 +47,20 @@ Return the minimum number of days to eat n oranges.</description>
     
     <item>
       <title>LRU Cache</title>
-      <link>https://jasonyangshadow.win/posts/lru-cache/</link>
+      <link>https://jasonyangshadow.github.io/posts/lru-cache/</link>
       <pubDate>Sat, 15 Aug 2020 03:27:08 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/lru-cache/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/lru-cache/</guid>
       <description>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
 get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1. put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</description>
     </item>
     
     <item>
       <title>Minimum Cost to Cut a Stick</title>
-      <link>https://jasonyangshadow.win/posts/minimum-cost-to-cut-a-stick/</link>
+      <link>https://jasonyangshadow.github.io/posts/minimum-cost-to-cut-a-stick/</link>
       <pubDate>Sun, 09 Aug 2020 21:48:00 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/minimum-cost-to-cut-a-stick/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/minimum-cost-to-cut-a-stick/</guid>
       <description>https://leetcode.com/contest/weekly-contest-201/problems/minimum-cost-to-cut-a-stick/
 The solution uses DFS+memo method, O(N^3)
 class Solution: def minCost(self, n: int, cuts: List[int]) -&amp;gt; int: memo = {} def helper(l, r): res = float(&amp;#34;inf&amp;#34;) key = str(l) +&amp;#34;_&amp;#34; + str(r) if key in memo: return memo[key] for i in range(0, len(cuts)): if cuts[i] &amp;lt;= l or cuts[i] &amp;gt;= r: continue cost = r - l res = min(res, helper(l, cuts[i]) + cost + helper(cuts[i], r)) res = 0 if res == float(&amp;#34;inf&amp;#34;) else res memo[key] = res return res return helper(0, n) </description>
@@ -68,10 +68,10 @@ class Solution: def minCost(self, n: int, cuts: List[int]) -&amp;gt; int: memo =
     
     <item>
       <title>Maximum Number of Non Overlapping Subarrays With Sum Equals Target</title>
-      <link>https://jasonyangshadow.win/posts/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/</link>
+      <link>https://jasonyangshadow.github.io/posts/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/</link>
       <pubDate>Sun, 09 Aug 2020 21:46:41 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/</guid>
       <description>Given an array nums and an integer target.
 Return the maximum number of non-empty non-overlapping subarrays such that the sum of values in each subarray is equal to target.
 Example 1: Input: nums = [1,1,1,1,1], target = 2 Output: 2 Explanation: There are 2 non-overlapping subarrays [1,1,1,1,1] with sum equals to target(2). Example 2: Input: nums = [-1,3,5,1,4,2,-9], target = 6 Output: 2 Explanation: There are 3 subarrays with sum equal to 6.</description>
@@ -79,10 +79,10 @@ Example 1: Input: nums = [1,1,1,1,1], target = 2 Output: 2 Explanation: There ar
     
     <item>
       <title>Find Kth Bit in Nth Binary String</title>
-      <link>https://jasonyangshadow.win/posts/find-kth-bit-in-nth-binary-string/</link>
+      <link>https://jasonyangshadow.github.io/posts/find-kth-bit-in-nth-binary-string/</link>
       <pubDate>Sun, 09 Aug 2020 21:45:07 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/find-kth-bit-in-nth-binary-string/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/find-kth-bit-in-nth-binary-string/</guid>
       <description>Given two positive integers n and k, the binary string Sn is formed as follows:
 S1 = &amp;ldquo;0&amp;rdquo; Si = Si-1 + &amp;ldquo;1&amp;rdquo; + reverse(invert(Si-1)) for i &amp;gt; 1 Where + denotes the concatenation operation, reverse(x) returns the reversed string x, and invert(x) inverts all the bits in x (0 changes to 1 and 1 changes to 0).
 For example, the first 4 strings in the above sequence are:
@@ -91,10 +91,10 @@ S1 = &amp;ldquo;0&amp;rdquo; S2 = &amp;ldquo;011&amp;rdquo; S3 = &amp;ldquo;0111
     
     <item>
       <title>Make the String Great</title>
-      <link>https://jasonyangshadow.win/posts/make-the-string-great/</link>
+      <link>https://jasonyangshadow.github.io/posts/make-the-string-great/</link>
       <pubDate>Sun, 09 Aug 2020 21:43:42 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/make-the-string-great/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/make-the-string-great/</guid>
       <description>Given a string s of lower and upper case English letters.
 A good string is a string which doesn&amp;rsquo;t have two adjacent characters s[i] and s[i + 1] where:
 0 &amp;lt;= i &amp;lt;= s.length - 2 s[i] is a lower-case letter and s[i + 1] is the same letter but in upper-case or vice-versa. To make the string good, you can choose two adjacent characters that make the string bad and remove them.</description>
@@ -102,19 +102,19 @@ A good string is a string which doesn&amp;rsquo;t have two adjacent characters s
     
     <item>
       <title>Median of Two Sorted Arrays</title>
-      <link>https://jasonyangshadow.win/posts/median-of-two-sorted-arrays/</link>
+      <link>https://jasonyangshadow.github.io/posts/median-of-two-sorted-arrays/</link>
       <pubDate>Fri, 07 Aug 2020 16:30:04 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/median-of-two-sorted-arrays/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/median-of-two-sorted-arrays/</guid>
       <description>There are two sorted arrays nums1 and nums2 of size m and n respectively. Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)). You may assume nums1 and nums2 cannot be both empty. nums1 = [1, 3] nums2 = [2] The median is 2.0 Example 2: nums1 = [1, 2] nums2 = [3, 4] The median is (2 + 3)/2 = 2.5</description>
     </item>
     
     <item>
       <title>Spiral Matrix</title>
-      <link>https://jasonyangshadow.win/posts/spiral-matrix/</link>
+      <link>https://jasonyangshadow.github.io/posts/spiral-matrix/</link>
       <pubDate>Fri, 07 Aug 2020 02:42:05 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/spiral-matrix/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/spiral-matrix/</guid>
       <description>Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
 Example 1: Input: [ [ 1, 2, 3 ], [ 4, 5, 6 ], [ 7, 8, 9 ] ] Output: [1,2,3,6,9,8,7,4,5] Example 2: Input: [ [1, 2, 3, 4], [5, 6, 7, 8], [9,10,11,12] ] Output: [1,2,3,4,8,12,11,10,9,5,6,7] class Solution: def spiralOrder(self, matrix: List[List[int]]) -&amp;gt; List[int]: if not matrix: return [] m = len(matrix) n = len(matrix[0]) res = [] left,right, top,down = 0, n-1, 0, m-1 while left &amp;lt;= right and top &amp;lt;= down: for i in range(left, right + 1): res.</description>
     </item>
