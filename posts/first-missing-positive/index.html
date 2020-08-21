@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="First Missing Positive">
+<meta itemprop="description" content="Given an unsorted integer array, find the smallest missing positive integer. Example 1: Input: [1,2,0] Output: 3 Example 2: Input: [3,4,-1,1] Output: 2 Example 3: Input: [7,8,9,11,12] Output: 1 Note: Your algorithm should run in O(n) time and uses constant extra space. #solution 1 (nlogn) algorithms class Solution: def firstMissingPositive(self, nums: List[int]) -&gt; int: nums.sort() res = 1 for num in nums: if num == res: res &#43;= 1 return">
+<meta itemprop="datePublished" content="2020-03-15T01:57:57+09:00" />
+<meta itemprop="dateModified" content="2020-03-15T01:57:57+09:00" />
+<meta itemprop="wordCount" content="721">
+
+
+
+<meta itemprop="keywords" content="leetcode,algorithms," />
+<meta property="og:title" content="First Missing Positive" />
+<meta property="og:description" content="Given an unsorted integer array, find the smallest missing positive integer. Example 1: Input: [1,2,0] Output: 3 Example 2: Input: [3,4,-1,1] Output: 2 Example 3: Input: [7,8,9,11,12] Output: 1 Note: Your algorithm should run in O(n) time and uses constant extra space. #solution 1 (nlogn) algorithms class Solution: def firstMissingPositive(self, nums: List[int]) -&gt; int: nums.sort() res = 1 for num in nums: if num == res: res &#43;= 1 return" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jasonyangshadow.win/posts/first-missing-positive/" />
+<meta property="article:published_time" content="2020-03-15T01:57:57+09:00" />
+<meta property="article:modified_time" content="2020-03-15T01:57:57+09:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="First Missing Positive"/>
+<meta name="twitter:description" content="Given an unsorted integer array, find the smallest missing positive integer. Example 1: Input: [1,2,0] Output: 3 Example 2: Input: [3,4,-1,1] Output: 2 Example 3: Input: [7,8,9,11,12] Output: 1 Note: Your algorithm should run in O(n) time and uses constant extra space. #solution 1 (nlogn) algorithms class Solution: def firstMissingPositive(self, nums: List[int]) -&gt; int: nums.sort() res = 1 for num in nums: if num == res: res &#43;= 1 return"/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>First Missing Positive</title>
+	<link rel="stylesheet" href="https://jasonyangshadow.win/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://jasonyangshadow.win">Xu YANG&#39;s Personal Website</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://jasonyangshadow.win/posts/">Posts</a>
+				<a href="https://jasonyangshadow.win/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/jasonyangshadow" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/jasonyangshadow" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://jasonyangshadow.win/posts/">Posts</a></li>
+			<li><a href="https://jasonyangshadow.win/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Mar 15, 2020</span></div>
+				<h1>First Missing Positive</h1>
+			</header>
+			<div class="content">
+				<p>Given an unsorted integer array, find the smallest missing positive integer.</p>
+<p>Example 1:</p>
+<pre><code>Input: [1,2,0]
+Output: 3
+</code></pre><p>Example 2:</p>
+<pre><code>Input: [3,4,-1,1]
+Output: 2
+</code></pre><p>Example 3:</p>
+<pre><code>Input: [7,8,9,11,12]
+Output: 1
+</code></pre><p>Note:</p>
+<p>Your algorithm should run in O(n) time and uses constant extra space.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#solution 1 (nlogn) algorithms</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">firstMissingPositive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">nums</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">nums</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">num</span> <span class="o">==</span> <span class="n">res</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">res</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#solution 2 (n) algorithms</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">firstMissingPositive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="k">while</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="ow">and</span> <span class="n">nums</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                <span class="n">tmp</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span>
+                <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">tmp</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">tmp</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span> <span class="o">+</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">+</span><span class="mi">1</span>
+</code></pre></div><p>The solution 2 is very hard to understand. There is a detailed explanation here.
+<a href="https://www.cnblogs.com/clnchanpin/p/6727065.html">https://www.cnblogs.com/clnchanpin/p/6727065.html</a>
+思路：这个题刚開始是没有思路的，难就难在O(n)时间内常数量空间，所以此题较为考察思维敏捷性。其解题核心思想是将数组的第i位存正数i+1。最后再遍历一次就可以。</p>
+<p>其它人的思想，我也是看了这个思想自己写的代码。</p>
+<p>尽管不能再另外开辟很数级的额外空间，可是能够在输入数组上就地进行swap操作。</p>
+<p>思路：交换数组元素。使得数组中第i位存放数值(i+1)。</p>
+<p>最后遍历数组，寻找第一个不符合此要求的元素，返回其下标。整个过程须要遍历两次数组，复杂度为O(n)。</p>
+<p>下图以题目中给出的第二个样例为例，解说操作过程。</p>
+<p><img src="https://images0.cnblogs.com/blog/300640/201304/21220310-d1b03fc59dd24e82b6db34a2cae12111.jpg" alt="image"></p>
+<p>妈蛋。这题挣扎好久。</p>
+<p>首先思路上，其次临界条件，这题和以下题异曲同工：</p>
+<p>n个元素的数组，里面的数都是0~n-1范围内的，求数组中反复的某一个元素。没有返回-1, 要求时间性能O(n) 空间性能O(1)。</p>
+<pre><code>代码还是比較简单。例如以下：
+public class Solution {
+    public int firstMissingPositive(int[] nums) {
+        if(nums.length == 0)
+            return 1;
+        //第i位存放i+1的数值
+        for(int i = 0; i &lt; nums.length;i++){
+            if(nums[i] &gt; 0){//nums[i]为正数，放在i+1位置
+                //假设交换的数据还是大于0且&lt;i+1，则放在合适的位置,且数据不相等，避免死循环
+                //这个while是关键，其它都是没有难度的
+                while(nums[i] &gt; 0 &amp;&amp; nums[i] &lt; i+1 &amp;&amp; nums[i] != nums[nums[i] -1]){
+                    int temp = nums[nums[i]-1];//交换数据
+                    nums[nums[i]-1] = nums[i];
+                    nums[i] = temp;
+                }
+            }
+        }
+        //循环寻找不符合要求的数据，返回
+        for(int i = 0; i &lt; nums.length;i++){
+            if(nums[i] != i+1){
+                return i+1;
+            }
+        }
+        //假设都符合要求，则返回长度+1的值
+		return nums.length + 1;
+    }
+}
+</code></pre>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://jasonyangshadow.win/tags/leetcode">leetcode</a></span><span class="tag"><a href="https://jasonyangshadow.win/tags/algorithms">algorithms</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>721 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-03-15 01:57 &#43;0900</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://jasonyangshadow.win/posts/longest-common-subsequence/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Longest Common Subsequence</span>
+			</a>
+			<a class="prev-post" href="https://jasonyangshadow.win/posts/all-nodes-distance-k-in-binary-tree/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>All Nodes Distance K in Binary Tree</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://jasonyangshadow.win">Xu YANG</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://jasonyangshadow.win/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://jasonyangshadow.win/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

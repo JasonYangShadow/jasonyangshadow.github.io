@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>technology on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.win/tags/technology/</link>
+    <description>Recent content in technology on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 06 Aug 2020 18:34:02 +0900</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.win/tags/technology/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>TOPT Password Generator</title>
+      <link>https://jasonyangshadow.win/posts/topt-password-generator/</link>
+      <pubDate>Thu, 06 Aug 2020 18:34:02 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/topt-password-generator/</guid>
+      <description>import httplib2 import hmac import hashlib import time import sys import struct import json timestep = 30 T0 = 0 def HOTP(K, C, digits=10): K_bytes = str.encode(K) C_bytes = struct.pack(&amp;#34;&amp;gt;Q&amp;#34;, C) hmac_sha512 = hmac.new(key = K_bytes, msg=C_bytes, digestmod=hashlib.sha512).hexdigest() return Truncate(hmac_sha512)[-digits:] def Truncate(hmac_sha512): offset = int(hmac_sha512[-1], 16) binary = int(hmac_sha512[(offset *2):((offset*2)+8)], 16) &amp;amp; 0x7FFFFFFF return str(binary) def TOTP(K, digits=10, timeref = 0, timestep = 30): C = int ( time.time() - timeref ) // timestep return HOTP(K, C, digits = digits) To call this TOTP function:</description>
+    </item>
+    
+    <item>
+      <title>Migration to Hugo</title>
+      <link>https://jasonyangshadow.win/posts/migration-to-hugo/</link>
+      <pubDate>Mon, 24 Feb 2020 14:06:02 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/migration-to-hugo/</guid>
+      <description>After tired of struggling on fixing error in Hexo, at last migrating my website from Hexo to Hugo. Hugo is a lightweight and fast golang framework to build static websites. The best feature of golang is that binary file is used in distribution, so that it will be very easy for me(tired of using &amp;lsquo;npm install xxx &amp;ndash;save or npm install xxx -g&amp;rsquo; to install necessary dependencies) to generate and deploy website.</description>
+    </item>
+    
+  </channel>
+</rss>

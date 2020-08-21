@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="cuda issue inside LPMX">
+<meta itemprop="description" content="I find that we could not call application with cuda support inside container even with excluding /dev, /proc, /sys folders inside the container. (which means these folders inside container are actual folders in host) The application fails when trying to read data from /dev/nvidiactl. In our LPMX, we do not need to copy and put every library from host to container, but directly get access to them inside container.
+[pid 18836] getcwd(&quot;/home/yangxu/.">
+<meta itemprop="datePublished" content="2019-07-04T18:21:15+00:00" />
+<meta itemprop="dateModified" content="2019-07-04T18:21:15+00:00" />
+<meta itemprop="wordCount" content="478">
+
+
+
+<meta itemprop="keywords" content="LPMX," />
+<meta property="og:title" content="cuda issue inside LPMX" />
+<meta property="og:description" content="I find that we could not call application with cuda support inside container even with excluding /dev, /proc, /sys folders inside the container. (which means these folders inside container are actual folders in host) The application fails when trying to read data from /dev/nvidiactl. In our LPMX, we do not need to copy and put every library from host to container, but directly get access to them inside container.
+[pid 18836] getcwd(&quot;/home/yangxu/." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jasonyangshadow.win/posts/cuda-issue-inside-lpmx/" />
+<meta property="article:published_time" content="2019-07-04T18:21:15+00:00" />
+<meta property="article:modified_time" content="2019-07-04T18:21:15+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="cuda issue inside LPMX"/>
+<meta name="twitter:description" content="I find that we could not call application with cuda support inside container even with excluding /dev, /proc, /sys folders inside the container. (which means these folders inside container are actual folders in host) The application fails when trying to read data from /dev/nvidiactl. In our LPMX, we do not need to copy and put every library from host to container, but directly get access to them inside container.
+[pid 18836] getcwd(&quot;/home/yangxu/."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>cuda issue inside LPMX</title>
+	<link rel="stylesheet" href="https://jasonyangshadow.win/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://jasonyangshadow.win">Xu YANG&#39;s Personal Website</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://jasonyangshadow.win/posts/">Posts</a>
+				<a href="https://jasonyangshadow.win/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/jasonyangshadow" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/jasonyangshadow" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://jasonyangshadow.win/posts/">Posts</a></li>
+			<li><a href="https://jasonyangshadow.win/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jul 4, 2019</span></div>
+				<h1>cuda issue inside LPMX</h1>
+			</header>
+			<div class="content">
+				<p>I find that we could not call application with cuda support inside container even with excluding /dev, /proc, /sys folders inside the container. (which means these folders inside container are actual folders in host)
+The application fails when trying to read data from /dev/nvidiactl. In our LPMX, we do not need to copy and put every library from host to container, but directly get access to them inside container.</p>
+<pre><code>[pid 18836] getcwd(&quot;/home/yangxu/.docker/ubuntu/16.04/workspace/Xxy3Y3NFzK/rw/root/ont-guppy&quot;, 4096) = 73
+[pid 18836] stat(&quot;/dev/nvidiactl&quot;, {st_mode=S_IFCHR|0666, st_rdev=makedev(195, 255), ...}) = 0
+[pid 18836] semop(3309669, {{0, -1, SEM_UNDO}}, 1) = 0
+[pid 18836] msgsnd(6488262, {1, &quot;\3\0\0\0wI\0\0\245\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 56, 0) = 0
+[pid 18633] &lt;... msgrcv resumed&gt; {1, &quot;\3\0\0\0wI\0\0\245\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 64, 0, 0) = 56
+[pid 18836] msgrcv(6521031,  &lt;unfinished ...&gt;
+[pid 18633] msgsnd(6521031, {1, &quot;\3\0\0\0wI\0\0\245\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 56, 0 &lt;unfinished ...&gt;
+[pid 18836] &lt;... msgrcv resumed&gt; {1, &quot;\3\0\0\0wI\0\0\245\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 56, 0, 0) = 56
+[pid 18633] &lt;... msgsnd resumed&gt; )      = 0
+[pid 18836] semop(3309669, {{0, 1, SEM_UNDO}}, 1 &lt;unfinished ...&gt;
+[pid 18633] msgrcv(6488262,  &lt;unfinished ...&gt;
+[pid 18836] &lt;... semop resumed&gt; )       = 0
+[pid 18836] stat(&quot;/dev/nvidiactl&quot;, {st_mode=S_IFCHR|0666, st_rdev=makedev(195, 255), ...}) = 0
+[pid 18836] semop(3309669, {{0, -1, SEM_UNDO}}, 1) = 0
+[pid 18836] msgsnd(6488262, {1, &quot;\3\0\0\0wI\0\0\246\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 56, 0) = 0
+[pid 18633] &lt;... msgrcv resumed&gt; {1, &quot;\3\0\0\0wI\0\0\246\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 64, 0, 0) = 56
+[pid 18836] msgrcv(6521031,  &lt;unfinished ...&gt;
+[pid 18633] msgsnd(6521031, {1, &quot;\3\0\0\0wI\0\0\246\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 56, 0blo &lt;unfinished ...&gt;
+[pid 18836] &lt;... msgrcv resumed&gt; {1, &quot;\3\0\0\0wI\0\0\246\0\0\0\0\0\0\0\0\0\0\0\333C\1\0\0\0\0\0\5\0\0\0&quot;...}, 56, 0, 0) = 56
+[pid 18633] &lt;... msgsnd resumed&gt; )      = 0
+[pid 18836] semop(3309669, {{0, 1, SEM_UNDO}}, 1 &lt;unfinished ...&gt;
+[pid 18633] msgrcv(6488262,  &lt;unfinished ...&gt;
+[pid 18836] &lt;... semop resumed&gt; )       = 0
+[pid 18836] time(NULL)                  = 1562162203
+[pid 18836] stat(&quot;/etc/localtime&quot;, {st_mode=S_IFREG|0644, st_size=333, ...}) = 0
+
+[pid 18836] open(&quot;/dev/nvidiactl&quot;, O_RDWR) = 6
+[pid 18836] fcntl(6, F_SETFD, FD_CLOEXEC) = 0
+[pid 18836] ioctl(6, 0xc04846d2, 0x7f7bc3539800) = -1 EINVAL (Invalid argument)
+
+[pid 18836] close(6)                    = 0
+[pid 18836] ioctl(5, FIGETBSZ, 0)       = 0
+[pid 18836] close(5)                    = 0
+[pid 18836] futex(0x7f7bc5109680, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+[pid 18836] futex(0x7f7bcb589c78, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+[pid 18836] madvise(0x7f7bc2b3a000, 10465280, MADV_DONTNEED) = 0
+[pid 18836] _exit(0)                    = ?
+[pid 18836] +++ exited with 0 +++
+[pid 18807] &lt;... futex resumed&gt; )       = 0
+[pid 18807] futex(0x7f7bcb589c88, FUTEX_WAKE_PRIVATE, 2147483647) = 0
+[pid 18807] brk(0x7f7bcd237000)         = 0x7f7bcd237000
+[pid 18807] brk(0x7f7bcd046000)         = 0x7f7bcd046000
+[pid 18807] brk(0x7f7bcce56000)         = 0x7f7bcce56000
+[pid 18807] brk(0x7f7bccc66000)         = 0x7f7bccc66000
+[pid 18807] brk(0x7f7bcca76000)         = 0x7f7bcca76000
+[pid 18807] brk(0x7f7bcc885000)         = 0x7f7bcc885000
+[pid 18807] brk(0x7f7bcc695000)         = 0x7f7bcc695000
+[pid 18807] brk(0x7f7bcc4a5000)         = 0x7f7bcc4a5000
+[pid 18807] brk(0x7f7bcc2b5000)         = 0x7f7bcc2b5000
+[pid 18807] brk(0x7f7bcc0c4000)         = 0x7f7bcc0c4000
+[pid 18807] brk(0x7f7bcbed4000)         = 0x7f7bcbed4000
+[pid 18807] brk(0x7f7bcbce4000)         = 0x7f7bcbce4000
+[pid 18807] brk(0x7f7bcbaf4000)         = 0x7f7bcbaf4000
+[pid 18807] brk(0x7f7bcb903000)         = 0x7f7bcb903000
+[pid 18807] brk(0x7f7bcb713000)         = 0x7f7bcb713000
+[pid 18807] close(4)                    = 0
+[pid 18807] write(3, &quot;2019-07-03 22:56:43.786789 [gupp&quot;..., 171) = 171
+[pid 18807] write(2, &quot;[guppy/error] main: Could not cr&quot;..., 149[guppy/error] main: Could not create CUDA device 0: CUDA error at /builds/ofan/ont_core_cpp/ont_core/common/cuda_common.cpp:183: CUDA_ERROR_NO_DEVICE) = 149
+</code></pre>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://jasonyangshadow.win/tags/lpmx">LPMX</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>478 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2019-07-05 03:21 &#43;0900</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://jasonyangshadow.win/posts/redis-data-structure-string/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Redis Data Structure-String</span>
+			</a>
+			<a class="prev-post" href="https://jasonyangshadow.win/posts/leedcode-11-conatiner-with-most-water/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>[leedcode]11.Conatiner with Most Water</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://jasonyangshadow.win">Xu YANG</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://jasonyangshadow.win/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://jasonyangshadow.win/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

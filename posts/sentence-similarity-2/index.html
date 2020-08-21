@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Sentence Similarity 2">
+<meta itemprop="description" content="Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.
+For example, words1 = [&ldquo;great&rdquo;, &ldquo;acting&rdquo;, &ldquo;skills&rdquo;] and words2 = [&ldquo;fine&rdquo;, &ldquo;drama&rdquo;, &ldquo;talent&rdquo;] are similar, if the similar word pairs are pairs = [[&ldquo;great&rdquo;, &ldquo;good&rdquo;], [&ldquo;fine&rdquo;, &ldquo;good&rdquo;], [&ldquo;acting&rdquo;,&ldquo;drama&rdquo;], [&ldquo;skills&rdquo;,&ldquo;talent&rdquo;]].
+Note that the similarity relation is transitive. For example, if &ldquo;great&rdquo; and &ldquo;good&rdquo; are similar, and &ldquo;fine&rdquo; and &ldquo;good&rdquo; are similar, then &ldquo;great&rdquo; and &ldquo;fine&rdquo; are similar.">
+<meta itemprop="datePublished" content="2020-03-31T14:55:40+09:00" />
+<meta itemprop="dateModified" content="2020-03-31T14:55:40+09:00" />
+<meta itemprop="wordCount" content="530">
+
+
+
+<meta itemprop="keywords" content="leetcode,algorithms," />
+<meta property="og:title" content="Sentence Similarity 2" />
+<meta property="og:description" content="Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.
+For example, words1 = [&ldquo;great&rdquo;, &ldquo;acting&rdquo;, &ldquo;skills&rdquo;] and words2 = [&ldquo;fine&rdquo;, &ldquo;drama&rdquo;, &ldquo;talent&rdquo;] are similar, if the similar word pairs are pairs = [[&ldquo;great&rdquo;, &ldquo;good&rdquo;], [&ldquo;fine&rdquo;, &ldquo;good&rdquo;], [&ldquo;acting&rdquo;,&ldquo;drama&rdquo;], [&ldquo;skills&rdquo;,&ldquo;talent&rdquo;]].
+Note that the similarity relation is transitive. For example, if &ldquo;great&rdquo; and &ldquo;good&rdquo; are similar, and &ldquo;fine&rdquo; and &ldquo;good&rdquo; are similar, then &ldquo;great&rdquo; and &ldquo;fine&rdquo; are similar." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jasonyangshadow.win/posts/sentence-similarity-2/" />
+<meta property="article:published_time" content="2020-03-31T14:55:40+09:00" />
+<meta property="article:modified_time" content="2020-03-31T14:55:40+09:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sentence Similarity 2"/>
+<meta name="twitter:description" content="Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.
+For example, words1 = [&ldquo;great&rdquo;, &ldquo;acting&rdquo;, &ldquo;skills&rdquo;] and words2 = [&ldquo;fine&rdquo;, &ldquo;drama&rdquo;, &ldquo;talent&rdquo;] are similar, if the similar word pairs are pairs = [[&ldquo;great&rdquo;, &ldquo;good&rdquo;], [&ldquo;fine&rdquo;, &ldquo;good&rdquo;], [&ldquo;acting&rdquo;,&ldquo;drama&rdquo;], [&ldquo;skills&rdquo;,&ldquo;talent&rdquo;]].
+Note that the similarity relation is transitive. For example, if &ldquo;great&rdquo; and &ldquo;good&rdquo; are similar, and &ldquo;fine&rdquo; and &ldquo;good&rdquo; are similar, then &ldquo;great&rdquo; and &ldquo;fine&rdquo; are similar."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Sentence Similarity 2</title>
+	<link rel="stylesheet" href="https://jasonyangshadow.win/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://jasonyangshadow.win">Xu YANG&#39;s Personal Website</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://jasonyangshadow.win/posts/">Posts</a>
+				<a href="https://jasonyangshadow.win/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/jasonyangshadow" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/jasonyangshadow" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://jasonyangshadow.win/posts/">Posts</a></li>
+			<li><a href="https://jasonyangshadow.win/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Mar 31, 2020</span></div>
+				<h1>Sentence Similarity 2</h1>
+			</header>
+			<div class="content">
+				<p>Given two sentences words1, words2 (each represented as an array of strings), and a list of similar word pairs pairs, determine if two sentences are similar.</p>
+<p>For example, words1 = [&ldquo;great&rdquo;, &ldquo;acting&rdquo;, &ldquo;skills&rdquo;] and words2 = [&ldquo;fine&rdquo;, &ldquo;drama&rdquo;, &ldquo;talent&rdquo;] are similar, if the similar word pairs are pairs = [[&ldquo;great&rdquo;, &ldquo;good&rdquo;], [&ldquo;fine&rdquo;, &ldquo;good&rdquo;], [&ldquo;acting&rdquo;,&ldquo;drama&rdquo;], [&ldquo;skills&rdquo;,&ldquo;talent&rdquo;]].</p>
+<p>Note that the similarity relation is transitive. For example, if &ldquo;great&rdquo; and &ldquo;good&rdquo; are similar, and &ldquo;fine&rdquo; and &ldquo;good&rdquo; are similar, then &ldquo;great&rdquo; and &ldquo;fine&rdquo; are similar.</p>
+<p>Similarity is also symmetric. For example, &ldquo;great&rdquo; and &ldquo;fine&rdquo; being similar is the same as &ldquo;fine&rdquo; and &ldquo;great&rdquo; being similar.</p>
+<p>Also, a word is always similar with itself. For example, the sentences words1 = [&ldquo;great&rdquo;], words2 = [&ldquo;great&rdquo;], pairs = [] are similar, even though there are no specified similar word pairs.</p>
+<p>Finally, sentences can only be similar if they have the same number of words. So a sentence like words1 = [&ldquo;great&rdquo;] can never be similar to words2 = [&ldquo;doubleplus&rdquo;,&ldquo;good&rdquo;].</p>
+<p>Note:</p>
+<p>The length of words1 and words2 will not exceed 1000.
+The length of pairs will not exceed 2000.
+The length of each pairs[i] will be 2.
+The length of each words[i] and pairs[i][j] will be in the range [1, 20].</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">areSentencesSimilarTwo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">words2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">pairs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words2</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="c1">#gernerate a dictionary set</span>
+        <span class="n">words</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">set</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="n">words</span><span class="p">[</span><span class="n">w1</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
+            <span class="n">words</span><span class="p">[</span><span class="n">w2</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
+        
+        <span class="n">similar_words</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1">#flat the data into a key/value map, that all similar words point to one unique root world</span>
+        <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">root_word</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">similar_words</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="n">similar_words</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">root_word</span>
+            <span class="p">[</span><span class="n">dfs</span><span class="p">(</span><span class="n">synom</span><span class="p">,</span> <span class="n">root_word</span><span class="p">)</span> <span class="k">for</span> <span class="n">synom</span> <span class="ow">in</span> <span class="n">words</span><span class="p">[</span><span class="n">word</span><span class="p">]]</span>
+        
+        <span class="p">[</span><span class="n">dfs</span><span class="p">(</span><span class="n">word</span><span class="p">,</span><span class="n">word</span><span class="p">)</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">]</span>
+        
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">similar_words</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w1</span><span class="p">)</span> <span class="o">==</span> <span class="n">similar_words</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">w2</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span> <span class="k">for</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words1</span><span class="p">,</span> <span class="n">words2</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">areSentencesSimilarTwo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">words2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">pairs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words2</span><span class="p">):</span> <span class="k">return</span> <span class="bp">False</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="n">graph</span><span class="p">[</span><span class="n">w1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span>
+            <span class="n">graph</span><span class="p">[</span><span class="n">w2</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
+        
+        <span class="k">for</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words1</span><span class="p">,</span> <span class="n">words2</span><span class="p">):</span>
+            <span class="n">stack</span><span class="p">,</span> <span class="n">seen</span> <span class="o">=</span> <span class="p">[</span><span class="n">w1</span><span class="p">],</span> <span class="p">{</span><span class="n">w1</span><span class="p">}</span>
+            <span class="k">while</span> <span class="n">stack</span><span class="p">:</span>
+                <span class="n">word</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">word</span> <span class="o">==</span> <span class="n">w2</span><span class="p">:</span> <span class="k">break</span>
+                <span class="k">for</span> <span class="n">nei</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">word</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="n">nei</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">seen</span><span class="p">:</span>
+                        <span class="n">seen</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nei</span><span class="p">)</span>
+                        <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nei</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+        
+        <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">DSU</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="c1">#par stores the parent of current val</span>
+        <span class="c1">#example: self.par[15] = 3 -&gt; 3 is the parent of 15</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">par</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1">#if x is root then self.par[x] = x</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+        <span class="c1">#find the root parent of x</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">def</span> <span class="nf">union</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="c1">#merge the root of x and y together</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">areSentencesSimilarTwo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">words1</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">words2</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">pairs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">words1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">words2</span><span class="p">):</span> <span class="k">return</span> <span class="bp">False</span>
+        
+        <span class="n">index</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+        <span class="n">dsu</span> <span class="o">=</span> <span class="n">DSU</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">pairs</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pair</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">index</span><span class="p">:</span>
+                    <span class="c1">#give different item different valus</span>
+                    <span class="c1"># e.g</span>
+                    <span class="c1">#{&#39;great&#39;: 0, &#39;good&#39;: 1, &#39;fine&#39;: 2, &#39;drama&#39;: 3, &#39;acting&#39;: 4, &#39;skills&#39;: 5, &#39;talent&#39;: 6} </span>
+                   <span class="n">index</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+            <span class="c1">#connect the pair based on its unique number</span>
+            <span class="c1"># [1, 1, 1, 4, 4, 6, 6, 7]</span>
+            <span class="n">dsu</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">index</span><span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+            
+        <span class="k">return</span> <span class="nb">all</span><span class="p">(</span><span class="n">w1</span> <span class="o">==</span> <span class="n">w2</span> <span class="ow">or</span> 
+                   <span class="n">w1</span> <span class="ow">in</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">w2</span> <span class="ow">in</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">dsu</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">w1</span><span class="p">])</span> <span class="o">==</span> <span class="n">dsu</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">index</span><span class="p">[</span><span class="n">w2</span><span class="p">])</span> <span class="k">for</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">words1</span><span class="p">,</span> <span class="n">words2</span><span class="p">))</span>
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://jasonyangshadow.win/tags/leetcode">leetcode</a></span><span class="tag"><a href="https://jasonyangshadow.win/tags/algorithms">algorithms</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>530 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-03-31 14:55 &#43;0900</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://jasonyangshadow.win/posts/redundant-connection/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Redundant Connection</span>
+			</a>
+			<a class="prev-post" href="https://jasonyangshadow.win/posts/top-k-frequent-words/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Top K Frequent Words</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://jasonyangshadow.win">Xu YANG</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://jasonyangshadow.win/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://jasonyangshadow.win/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LPMX on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.win/tags/lpmx/</link>
+    <description>Recent content in LPMX on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 04 Jul 2019 18:21:15 +0000</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.win/tags/lpmx/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>cuda issue inside LPMX</title>
+      <link>https://jasonyangshadow.win/posts/cuda-issue-inside-lpmx/</link>
+      <pubDate>Thu, 04 Jul 2019 18:21:15 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/cuda-issue-inside-lpmx/</guid>
+      <description>I find that we could not call application with cuda support inside container even with excluding /dev, /proc, /sys folders inside the container. (which means these folders inside container are actual folders in host) The application fails when trying to read data from /dev/nvidiactl. In our LPMX, we do not need to copy and put every library from host to container, but directly get access to them inside container.
+[pid 18836] getcwd(&amp;quot;/home/yangxu/.</description>
+    </item>
+    
+    <item>
+      <title>LPMX Alpha-release v0.4</title>
+      <link>https://jasonyangshadow.win/posts/lpmx-alpha-release-v0-4/</link>
+      <pubDate>Sat, 13 Apr 2019 15:25:49 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/lpmx-alpha-release-v0-4/</guid>
+      <description>LPMX Alpha-v0.4 release
+[Fix]
+ permission denied issue during uncompressing docker image  [Enhancement]
+ Add support for downloading files from google drive  LPMX, i.e, Local Package Manager X, is a pure rootless and composable container system.</description>
+    </item>
+    
+    <item>
+      <title>containerized ubuntu 16.04 noted issues</title>
+      <link>https://jasonyangshadow.win/posts/containerized-ubuntu-16-04-noted-issues/</link>
+      <pubDate>Sat, 13 Apr 2019 15:14:37 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/containerized-ubuntu-16-04-noted-issues/</guid>
+      <description>Issue 1: Error during &amp;lsquo;apt install xxx&amp;rsquo;
+ debconf: delaying package configuration, since apt-utils is not installed (Reading database ... 4768 files and directories currently installed.) Preparing to unpack .../nano_2.5.3-2ubuntu2_amd64.deb ... Unpacking nano (2.5.3-2ubuntu2) ... dpkg: error processing archive /var/cache/apt/archives/nano_2.5.3-2ubuntu2_amd64.deb (--unpack): error setting timestamps of &#39;/bin/rnano.dpkg-new&#39;: No such file or directory Errors were encountered while processing: /var/cache/apt/archives/nano_2.5.3-2ubuntu2_amd64.deb E: Sub-process /usr/bin/dpkg returned an error code (1) Still work on figuring out the reason.</description>
+    </item>
+    
+    <item>
+      <title>containerized centos 7 issues and solutions</title>
+      <link>https://jasonyangshadow.win/posts/containerized-centos-7-issues-and-solutions/</link>
+      <pubDate>Sat, 13 Apr 2019 15:02:53 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/containerized-centos-7-issues-and-solutions/</guid>
+      <description>Just make containerized centos 7 run properly in LPMX. Issue 1: Error during &amp;lsquo;yum update&amp;rsquo;
+ error: db5 error(5) from dbenv-&amp;gt;open: Input/output error error: cannot open Packages index using db5 - Input/output error (5) error: cannot open Packages database in /var/lib/rpm CRITICAL:yum.main: Error: rpmdb open failed Solution 1: Rebuild rpm db
+ rm -f /var/lib/rpm/__db* db_verify /var/lib/rpm/Packages rpm --rebuilddb yum clean all Issue 2: Error during &amp;lsquo;yum install xxx&amp;rsquo;
+ Traceback (most recent call last): File &amp;quot;/usr/bin/yum&amp;quot;, line 29, in &amp;lt;module&amp;gt; yummain.</description>
+    </item>
+    
+    <item>
+      <title>compiling LPMX&#39;s dependencies on centos 5.5</title>
+      <link>https://jasonyangshadow.win/posts/compiling-lpmxs-dependencies-on-centos-5-5/</link>
+      <pubDate>Tue, 02 Apr 2019 11:32:33 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/compiling-lpmxs-dependencies-on-centos-5-5/</guid>
+      <description>LPMX is a pure composable rootless container system. It runs purely in rootless mode and is designed for running under restricted environments such as grid infrastructure and batch system, where end-users could not get root privileges. LPMX itself is developed using golang and could be easily compiled and deployed acroos different platforms. However, its dependencis including fakechroot, fakeroot and memcached related stuff have to be recompiled. Here I use centos 5.</description>
+    </item>
+    
+    <item>
+      <title>fake union file system</title>
+      <link>https://jasonyangshadow.win/posts/fake-union-file-system/</link>
+      <pubDate>Thu, 20 Sep 2018 14:16:54 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/fake-union-file-system/</guid>
+      <description>Recently, I keep working on developing a fake unionfs for our rootless container. As we employ fakechroot to intercept system calls triggered by programs, I added code for unionfs support. The basic rules for our fake unionfs: 1. Complete rootless, unlike current implementations such as FUSE, we don&amp;rsquo;t need to install any hooks or kernel models in order to bridge kernel with userspace, all features provided are implemented by system calls interception.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>concurrency on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.win/tags/concurrency/</link>
+    <description>Recent content in concurrency on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Wed, 15 Jul 2020 22:06:56 +0900</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.win/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Print in Order</title>
+      <link>https://jasonyangshadow.win/posts/print-in-order/</link>
+      <pubDate>Wed, 15 Jul 2020 22:06:56 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/print-in-order/</guid>
+      <description>Suppose we have a class:
+public class Foo { public void first() { print(&amp;ldquo;first&amp;rdquo;); } public void second() { print(&amp;ldquo;second&amp;rdquo;); } public void third() { print(&amp;ldquo;third&amp;rdquo;); } }
+The same instance of Foo will be passed to three different threads. Thread A will call first(), thread B will call second(), and thread C will call third(). Design a mechanism and modify the program to ensure that second() is executed after first(), and third() is executed after second().</description>
+    </item>
+    
+    <item>
+      <title>golang scheduler</title>
+      <link>https://jasonyangshadow.win/posts/golang-os-scheduler/</link>
+      <pubDate>Mon, 06 May 2019 02:28:17 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/golang-os-scheduler/</guid>
+      <description>Recently I am interested in the implementation and mechanics behind the scheduler in Go, as I just finished developing one job schedule system several days ago. Thougth I could not share more details on that system, it is simple and motives me to dig deeper into golang itself.
+Found one really useful blog https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html
+Generally speaking, go scheduler is really amazing by trunning I/O blocking work into CPU-bound work at the os level and it has great performance over traditional implementation when programs have to trigger system calls frequently.</description>
+    </item>
+    
+  </channel>
+</rss>

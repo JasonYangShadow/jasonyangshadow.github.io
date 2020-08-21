@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gfg on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.win/tags/gfg/</link>
+    <description>Recent content in gfg on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Fri, 07 Aug 2020 14:54:36 +0900</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.win/tags/gfg/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Minimum Operations</title>
+      <link>https://jasonyangshadow.win/posts/minimum-operations/</link>
+      <pubDate>Fri, 07 Aug 2020 14:54:36 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/minimum-operations/</guid>
+      <description>You are given a number N. You have to find the number of operations required to reach N from 0. You have 2 operations available:
+Double the number Add one to the number Input: The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case contains an integer N.
+Output: For each test case, in a new line, print the minimum number of operations required to reach N from 0.</description>
+    </item>
+    
+  </channel>
+</rss>

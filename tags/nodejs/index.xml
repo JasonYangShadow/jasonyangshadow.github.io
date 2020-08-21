@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nodejs on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.win/tags/nodejs/</link>
+    <description>Recent content in nodejs on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 08 Jun 2019 17:30:43 +0000</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.win/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>migration to hexo</title>
+      <link>https://jasonyangshadow.win/posts/migration-to-hexo/</link>
+      <pubDate>Sat, 08 Jun 2019 17:30:43 +0000</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/migration-to-hexo/</guid>
+      <description>At last, my self-host website migrates from wordpress to hexo, which cost me several hours to make everything work as expected. Wordpress is good, easy to build but too heavy for me, so many plugins and have to expose wp-login.php to public with security risks. Hexo is much lighter, using markdown as editor so I could use my vim. Though, it is a bit of difficult to deploy static files to self-host server, self-host git and git hooks help me so much so that I could edit, generate and deploy my website anywhere.</description>
+    </item>
+    
+  </channel>
+</rss>

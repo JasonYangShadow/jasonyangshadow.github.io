@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="__libc_start_main usage">
+<meta itemprop="description" content="__libc_start_main usage Recently I am working on hacking user&rsquo;s main function. The reason why I need to do this is that we are unable to change argv0 via ld.so.
+Basically, there are two ways if you want to use execve syscall. http://man7.org/linux/man-pages/man2/execve.2.html
+ Directy using execve with executable&rsquo;s filename as the target (absolute path) and argv0(the first item in argv array) as the argument passed to &ldquo;main&rdquo; function.   argv is an array of argument strings passed to the new program.">
+<meta itemprop="datePublished" content="2020-01-21T22:10:23+00:00" />
+<meta itemprop="dateModified" content="2020-01-21T22:10:23+00:00" />
+<meta itemprop="wordCount" content="645">
+
+
+
+<meta itemprop="keywords" content="glibc,C," />
+<meta property="og:title" content="__libc_start_main usage" />
+<meta property="og:description" content="__libc_start_main usage Recently I am working on hacking user&rsquo;s main function. The reason why I need to do this is that we are unable to change argv0 via ld.so.
+Basically, there are two ways if you want to use execve syscall. http://man7.org/linux/man-pages/man2/execve.2.html
+ Directy using execve with executable&rsquo;s filename as the target (absolute path) and argv0(the first item in argv array) as the argument passed to &ldquo;main&rdquo; function.   argv is an array of argument strings passed to the new program." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jasonyangshadow.win/posts/libc-start-main-usage/" />
+<meta property="article:published_time" content="2020-01-21T22:10:23+00:00" />
+<meta property="article:modified_time" content="2020-01-21T22:10:23+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="__libc_start_main usage"/>
+<meta name="twitter:description" content="__libc_start_main usage Recently I am working on hacking user&rsquo;s main function. The reason why I need to do this is that we are unable to change argv0 via ld.so.
+Basically, there are two ways if you want to use execve syscall. http://man7.org/linux/man-pages/man2/execve.2.html
+ Directy using execve with executable&rsquo;s filename as the target (absolute path) and argv0(the first item in argv array) as the argument passed to &ldquo;main&rdquo; function.   argv is an array of argument strings passed to the new program."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>__libc_start_main usage</title>
+	<link rel="stylesheet" href="https://jasonyangshadow.win/css/style.min.657bcb7af31123e4156b1a3d2ff60a636717e54ead74f882136b5114cf72b55e.css" integrity="sha256-ZXvLevMRI+QVaxo9L/YKY2cX5U6tdPiCE2tRFM9ytV4=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp faster">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://jasonyangshadow.win">Xu YANG&#39;s Personal Website</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://jasonyangshadow.win/posts/">Posts</a>
+				<a href="https://jasonyangshadow.win/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/jasonyangshadow" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/jasonyangshadow" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://jasonyangshadow.win/posts/">Posts</a></li>
+			<li><a href="https://jasonyangshadow.win/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Jan 21, 2020</span></div>
+				<h1>__libc_start_main usage</h1>
+			</header>
+			<div class="content">
+				<h3 id="__libc_start_main-usage">__libc_start_main usage<a href="#__libc_start_main-usage" class="anchor" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 7h3a5 5 0 0 1 5 5 5 5 0 0 1-5 5h-3m-6 0H6a5 5 0 0 1-5-5 5 5 0 0 1 5-5h3"></path><line x1="8" y1="12" x2="16" y2="12"></line></svg></a></h3>
+<p>Recently I am working on hacking user&rsquo;s main function. The reason why I need to do this is that we are unable to change argv0 via ld.so.</p>
+<p>Basically, there are two ways if you want to use execve syscall. <a href="http://man7.org/linux/man-pages/man2/execve.2.html">http://man7.org/linux/man-pages/man2/execve.2.html</a></p>
+<ul>
+<li>Directy using execve with executable&rsquo;s filename as the target  (absolute path) and argv0(the first item in argv array) as the argument  passed to &ldquo;main&rdquo; function.</li>
+</ul>
+<blockquote>
+<p>argv is an array of argument strings passed to the new program.  By
+convention, the first of these strings (i.e., argv[0]) should contain
+the filename associated with the file being executed.  envp is an
+array of strings, conventionally of the form key=value, which are
+passed as environment to the new program.  The argv and envp arrays
+must each include a null pointer at the end of the array</p>
+</blockquote>
+<pre><code>execve(target_executable_path, argv[](filename, ...), envp[])
+</code></pre><ul>
+<li>Using execve with ld.so as its filename and passing  target(absolute path) as the second item in argv array. The first one  should be ld.so.</li>
+</ul>
+<p>Check out the source code rtld.c here <a href="https://code.woboq.org/userspace/glibc/elf/rtld.c.html#1120">https://code.woboq.org/userspace/glibc/elf/rtld.c.html#1120</a></p>
+<blockquote>
+<p>Ho ho.  We are not the program interpreter!  We are the program
+itself!  This means someone ran ld.so as a command.  Well, that
+might be convenient to do sometimes.  We support it by
+interpreting the args like this:
+ld.so PROGRAM ARGS&hellip;
+The first argument is the name of a file containing an ELF
+executable we will load and run with the following arguments.
+To simplify life here, PROGRAM is searched for using the
+normal rules for shared objects, rather than $PATH or anything
+like that.  We just load it and use its entry point; we don&rsquo;t
+pay attention to its PT_INTERP command (we are the interpreter
+ourselves).  This is an easy way to test a new ld.so before
+installing it.</p>
+</blockquote>
+<pre><code>execve(ld.so, argv[](ld.so, target_executable_path, ...), envp[])
+</code></pre><p>Why do we need these two ways? As mentioned above, when users want to test newly built ld.so before installing it into system. A good feature provided here is that we do not need to patch elf header(or recompile  binaries with setting &ndash;dynamic-linker option) while replacing custom  ld.so as our wish. But a key feature lacked here is that <strong>we are unable to pass argv0(custom filename)</strong> to target executable.</p>
+<p>One method to solve this problem is to patch ld.so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="mi">798</span><span class="n">d797</span>
+<span class="o">&lt;</span>       <span class="kt">char</span> <span class="o">*</span><span class="n">argv0</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="mi">854</span><span class="p">,</span><span class="mi">860</span><span class="n">d852</span>
+<span class="o">&lt;</span>       <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="o">!</span> <span class="n">strcmp</span> <span class="p">(</span><span class="n">_dl_argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s">&#34;--argv0&#34;</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">_dl_argc</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">&lt;</span>       <span class="p">{</span>
+<span class="o">&lt;</span>          <span class="n">argv0</span> <span class="o">=</span> <span class="n">_dl_argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="o">&lt;</span>          <span class="n">_dl_skip_args</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="o">&lt;</span>          <span class="n">_dl_argc</span> <span class="o">-=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="o">&lt;</span>          <span class="n">_dl_argv</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="o">&lt;</span>       <span class="p">}</span>
+<span class="mi">889</span><span class="p">,</span><span class="mi">890</span><span class="n">c881</span>
+<span class="o">&lt;</span>   <span class="o">--</span><span class="n">audit</span> <span class="n">LIST</span>          <span class="n">use</span> <span class="n">objects</span> <span class="n">named</span> <span class="n">in</span> <span class="n">LIST</span> <span class="n">as</span> <span class="n">auditors</span><span class="err">\</span><span class="n">n</span>\
+<span class="o">&lt;</span>   <span class="o">--</span><span class="n">argv0</span> <span class="n">STRING</span>      <span class="n">argv0</span> <span class="n">patch</span> <span class="k">for</span> <span class="n">ld</span><span class="p">.</span><span class="n">so</span><span class="err">\</span><span class="n">n</span><span class="s">&#34;);</span>
+<span class="o">---</span>
+<span class="o">&gt;</span>   <span class="o">--</span><span class="n">audit</span> <span class="n">LIST</span>          <span class="n">use</span> <span class="n">objects</span> <span class="n">named</span> <span class="n">in</span> <span class="n">LIST</span> <span class="n">as</span> <span class="n">auditors</span><span class="err">\</span><span class="n">n</span><span class="s">&#34;);</span>
+<span class="mi">942</span><span class="p">,</span><span class="mi">944</span><span class="n">d932</span>
+<span class="o">&lt;</span>       <span class="k">if</span><span class="p">(</span><span class="n">argv0</span><span class="p">){</span>
+<span class="o">&lt;</span>         <span class="n">_dl_argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">argv0</span><span class="p">;</span>
+<span class="o">&lt;</span>       <span class="p">}</span>
+
+</code></pre></div><p>But this way has one problem that we have to patch every containered os user are about to download. As different distros contain different ld.so(version, backports contained), it is a really painful job.</p>
+<p>Another way to solve this problem is to overwrite &lsquo;__libc_start_main&rsquo; via LD_PRELOAD tricks:</p>
+<div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">__libc_start_main
+Name
+__libc_start_main -- initialization routine
+Synopsis
+
+BP_SYM __libc_start_main(int (*main) (int, char**, char**), int argc, char *__unbounded *__unbounded ubp_av, void (*init) (void), void (*fini) (void), void (*rtld_fini) (void), void (*__unbounded stack_end));
+
+Description
+
+__libc_start_main initializes glibc.
+
+__libc_start_main is not in the source standard; it is only in the binary standard.
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span> <span class="cpf">&lt;config.h&gt;</span><span class="cp">
+</span><span class="cp">#define _GNU_SOURCE
+</span><span class="cp">#include</span> <span class="cpf">&lt;sys/mman.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&lt;dlfcn.h&gt;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;unionfs.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;setenv.h&#34;</span><span class="cp">
+</span><span class="cp">#include</span> <span class="cpf">&#34;log.h&#34;</span><span class="cp">
+</span><span class="cp"></span>
+<span class="kt">int</span> <span class="nf">__libc_start_main</span><span class="p">(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">main</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="p">),</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="n">ubp_av</span><span class="p">,</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="p">),</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fini</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">rtld_fini</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">stack_end</span><span class="p">))</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">original__libc_start_main</span><span class="p">)(</span><span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">main</span><span class="p">)</span> <span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="p">),</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span><span class="kt">char</span> <span class="o">**</span><span class="n">ubp_av</span><span class="p">,</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">init</span><span class="p">)</span> <span class="p">(</span><span class="kt">void</span><span class="p">),</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">fini</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">rtld_fini</span><span class="p">)(</span><span class="kt">void</span><span class="p">),</span><span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">stack_end</span><span class="p">));</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">ubp_av</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span>
+        <span class="kt">char</span> <span class="n">tmp</span><span class="p">[</span><span class="n">PATH_MAX</span><span class="p">];</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="n">ubp_av</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+        <span class="kt">int</span> <span class="n">ret</span> <span class="o">=</span> <span class="n">narrow_path</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">ret</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">log_debug</span><span class="p">(</span><span class="s">&#34;__libc_start_main narrows down argv0 path in main from: %s -&gt; %s&#34;</span><span class="p">,</span> <span class="n">ubp_av</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tmp</span><span class="p">);</span>
+            <span class="n">strcpy</span><span class="p">(</span><span class="n">ubp_av</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tmp</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">original__libc_start_main</span> <span class="o">=</span> <span class="n">dlsym</span><span class="p">(</span><span class="n">RTLD_NEXT</span><span class="p">,</span><span class="s">&#34;__libc_start_main&#34;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">original__libc_start_main</span><span class="p">(</span><span class="n">main</span><span class="p">,</span><span class="n">argc</span><span class="p">,</span><span class="n">ubp_av</span><span class="p">,</span><span class="n">init</span><span class="p">,</span><span class="n">fini</span><span class="p">,</span><span class="n">rtld_fini</span><span class="p">,</span><span class="n">stack_end</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><p>By using LD_PRELOAD tricks, this  customized main function could process argv0 parameter before calling user&rsquo;s main funciton. The implementation is so nice and elegant!!! No more distros dependent patches.</p>
+
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://jasonyangshadow.win/tags/glibc">glibc</a></span><span class="tag"><a href="https://jasonyangshadow.win/tags/c">C</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>645 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-01-22 07:10 &#43;0900</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="next-post" href="https://jasonyangshadow.win/posts/next-closest-time/">
+				<span class="post-nav-label"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>&nbsp;Newer</span><br><span>Next Closest Time</span>
+			</a>
+			<a class="prev-post" href="https://jasonyangshadow.win/posts/dp-pattern-3/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>DP Pattern 3</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://jasonyangshadow.win">Xu YANG</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://jasonyangshadow.win/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://jasonyangshadow.win/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>
