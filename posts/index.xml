@@ -6,8 +6,189 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Thu, 20 Aug 2020 12:55:59 +0900</lastBuildDate>
+		<lastBuildDate>Wed, 26 Aug 2020 17:38:59 +0900</lastBuildDate>
 		<atom:link href="https://jasonyangshadow.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Detect Cycles in 2d Grid</title>
+			<link>https://jasonyangshadow.github.io/posts/detect-cycles-in-2d-grid/</link>
+			<pubDate>Wed, 26 Aug 2020 17:38:59 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/detect-cycles-in-2d-grid/</guid>
+			<description>https://leetcode.com/problems/detect-cycles-in-2d-grid/
+class Solution: def containsCycle(self, grid: List[List[str]]) -&amp;gt; bool: v = set() m,n = len(grid), len(grid[0]) def dfs(node, parent): if node in v: return True v.add(node) nx, ny = node childs = [(cx, cy) for cx ,cy in [[nx + 1, ny], [nx - 1, ny], [nx, ny + 1], [nx, ny-1]] if 0&amp;lt;= cx &amp;lt; m and 0&amp;lt;= cy &amp;lt; n and grid[nx][ny] == grid[cx][cy] and (cx,cy) != parent] for x in childs: if dfs(x, node): return True return False for i in range(m): for j in range(n): if (i,j) in v: continue else: if dfs((i, j), None): return True return False class DSU: def __init__(self, N): self.</description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/detect-cycles-in-2d-grid/">https://leetcode.com/problems/detect-cycles-in-2d-grid/</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">containsCycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="n">m</span><span class="p">,</span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="k">def</span> <span class="nf">dfs</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+            <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">node</span>
+            <span class="n">childs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">)</span> <span class="k">for</span> <span class="n">cx</span> <span class="p">,</span><span class="n">cy</span> <span class="ow">in</span> <span class="p">[[</span><span class="n">nx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="p">],</span> <span class="p">[</span><span class="n">nx</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ny</span><span class="p">],</span> <span class="p">[</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="k">if</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">cx</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="ow">and</span> <span class="mi">0</span><span class="o">&lt;=</span> <span class="n">cy</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="ow">and</span> <span class="n">grid</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span> <span class="o">==</span> <span class="n">grid</span><span class="p">[</span><span class="n">cx</span><span class="p">][</span><span class="n">cy</span><span class="p">]</span> <span class="ow">and</span> <span class="p">(</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="p">)</span> <span class="o">!=</span> <span class="n">parent</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">childs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">dfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">node</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">dfs</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="bp">None</span><span class="p">):</span>
+                        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">DSU</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">par</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">N</span>
+        
+    <span class="k">def</span> <span class="nf">find_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_x</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    
+    <span class="k">def</span> <span class="nf">union_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">xr</span><span class="p">,</span> <span class="n">yr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_x</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_x</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">xr</span> <span class="o">==</span> <span class="n">yr</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">xr</span><span class="p">]</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">yr</span><span class="p">]:</span>
+            <span class="n">xr</span><span class="p">,</span> <span class="n">yr</span> <span class="o">=</span> <span class="n">yr</span><span class="p">,</span> <span class="n">xr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">par</span><span class="p">[</span><span class="n">yr</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">xr</span><span class="p">]</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">yr</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">yr</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">[</span><span class="n">xr</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">True</span>
+            
+        
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">containsCycle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">R</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        
+        <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">r</span><span class="o">*</span><span class="n">C</span> <span class="o">+</span> <span class="n">c</span>
+        
+        <span class="n">dsu</span> <span class="o">=</span> <span class="n">DSU</span><span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">C</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">R</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">C</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">C</span> <span class="ow">and</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">dsu</span><span class="o">.</span><span class="n">union_x</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">),</span><span class="n">encode</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">)):</span>
+                        <span class="k">return</span> <span class="bp">True</span>
+                <span class="k">if</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">R</span> <span class="ow">and</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">grid</span><span class="p">[</span><span class="n">r</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">dsu</span><span class="o">.</span><span class="n">union_x</span><span class="p">(</span><span class="n">encode</span><span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span> <span class="n">encode</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">)):</span>
+                        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Minimum Numbers of Function Calls to Make Target Array</title>
+			<link>https://jasonyangshadow.github.io/posts/minimum-numbers-of-function-calls-to-make-target-array/</link>
+			<pubDate>Wed, 26 Aug 2020 15:02:31 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/minimum-numbers-of-function-calls-to-make-target-array/</guid>
+			<description>Your task is to form an integer array nums from an initial array of zeros arr that is the same size as nums.
+Return the minimum number of function calls to make nums from arr.
+The answer is guaranteed to fit in a 32-bit signed integer.
+Example 1: Input: nums = [1,5] Output: 5 Explanation: Increment by 1 (second element): [0, 0] to get [0, 1] (1 operation). Double all the elements: [0, 1] -&amp;gt; [0, 2] -&amp;gt; [0, 4] (2 operations).</description>
+			<content type="html"><![CDATA[<p>Your task is to form an integer array nums from an initial array of zeros arr that is the same size as nums.</p>
+<p>Return the minimum number of function calls to make nums from arr.</p>
+<p>The answer is guaranteed to fit in a 32-bit signed integer.</p>
+<pre><code>Example 1:
+
+Input: nums = [1,5]
+Output: 5
+Explanation: Increment by 1 (second element): [0, 0] to get [0, 1] (1 operation).
+Double all the elements: [0, 1] -&gt; [0, 2] -&gt; [0, 4] (2 operations).
+Increment by 1 (both elements)  [0, 4] -&gt; [1, 4] -&gt; [1, 5] (2 operations).
+Total of operations: 1 + 2 + 2 = 5.
+
+Example 2:
+
+Input: nums = [2,2]
+Output: 3
+Explanation: Increment by 1 (both elements) [0, 0] -&gt; [0, 1] -&gt; [1, 1] (2 operations).
+Double all the elements: [1, 1] -&gt; [2, 2] (1 operation).
+Total of operations: 2 + 1 = 3.
+
+Example 3:
+
+Input: nums = [4,2,5]
+Output: 6
+Explanation: (initial)[0,0,0] -&gt; [1,0,0] -&gt; [1,0,1] -&gt; [2,0,2] -&gt; [2,1,2] -&gt; [4,2,4] -&gt; [4,2,5](nums).
+
+Example 4:
+
+Input: nums = [3,2,2,4]
+Output: 7
+
+Example 5:
+
+Input: nums = [2,4,8,16]
+Output: 8
+
+ 
+
+Constraints:
+
+    1 &lt;= nums.length &lt;= 10^5
+    0 &lt;= nums[i] &lt;= 10^9
+</code></pre><p>Explanation:</p>
+<pre><code>Intuition
+Think in backward way,
+for each number a in A,
+if a % 2 == 1, we do operation 0 backward, turning 1 to 0.
+If all a % 2 == 0, we do operation 1 backward.
+
+Some observation here:
+
+    For each bit &quot;1&quot; in the bianry format of a,
+    we need at least one operation 0.
+    All operation 1 can be shared.
+
+Explanation
+
+For each number a,
+we count the number of bits &quot;1&quot;,
+as well as the length of a in binary format.
+
+The number of operation 0 equals to the total number of bits &quot;1&quot;.
+The number of operation 1 equals to maximum bit length - 1.
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">minOperations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">popcount</span> <span class="o">=</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">map</span><span class="p">(</span><span class="nb">bin</span><span class="p">,</span> <span class="n">nums</span><span class="p">):</span>
+            <span class="n">popcount</span> <span class="o">+=</span> <span class="n">b</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+            <span class="n">width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">popcount</span> <span class="o">+</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Minimum Number of Vertices to Reach All Nodes</title>
+			<link>https://jasonyangshadow.github.io/posts/minimum-number-of-vertices-to-reach-all-nodes/</link>
+			<pubDate>Wed, 26 Aug 2020 02:08:57 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/minimum-number-of-vertices-to-reach-all-nodes/</guid>
+			<description>https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/
+The solution is easy, just check the indegree value of all nodes.
+class Solution: def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -&amp;gt; List[int]: indegree = [0]*n for edge in edges: indegree[edge[1]] += 1 return [d for d in range(n) if indegree[d] == 0] </description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/">https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/</a></p>
+<p>The solution is easy, just check the indegree value of all nodes.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">findSmallestSetOfVertices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">edges</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">indegree</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+        
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">edges</span><span class="p">:</span>
+            <span class="n">indegree</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+        <span class="k">return</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">indegree</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Split Array Largest Sum</title>

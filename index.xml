@@ -7,10 +7,43 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Thu, 20 Aug 2020 12:55:59 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 26 Aug 2020 17:38:59 +0900</lastBuildDate>
     
 	<atom:link href="https://jasonyangshadow.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Detect Cycles in 2d Grid</title>
+      <link>https://jasonyangshadow.github.io/posts/detect-cycles-in-2d-grid/</link>
+      <pubDate>Wed, 26 Aug 2020 17:38:59 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/detect-cycles-in-2d-grid/</guid>
+      <description>https://leetcode.com/problems/detect-cycles-in-2d-grid/
+class Solution: def containsCycle(self, grid: List[List[str]]) -&amp;gt; bool: v = set() m,n = len(grid), len(grid[0]) def dfs(node, parent): if node in v: return True v.add(node) nx, ny = node childs = [(cx, cy) for cx ,cy in [[nx + 1, ny], [nx - 1, ny], [nx, ny + 1], [nx, ny-1]] if 0&amp;lt;= cx &amp;lt; m and 0&amp;lt;= cy &amp;lt; n and grid[nx][ny] == grid[cx][cy] and (cx,cy) != parent] for x in childs: if dfs(x, node): return True return False for i in range(m): for j in range(n): if (i,j) in v: continue else: if dfs((i, j), None): return True return False class DSU: def __init__(self, N): self.</description>
+    </item>
+    
+    <item>
+      <title>Minimum Numbers of Function Calls to Make Target Array</title>
+      <link>https://jasonyangshadow.github.io/posts/minimum-numbers-of-function-calls-to-make-target-array/</link>
+      <pubDate>Wed, 26 Aug 2020 15:02:31 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/minimum-numbers-of-function-calls-to-make-target-array/</guid>
+      <description>Your task is to form an integer array nums from an initial array of zeros arr that is the same size as nums.
+Return the minimum number of function calls to make nums from arr.
+The answer is guaranteed to fit in a 32-bit signed integer.
+Example 1: Input: nums = [1,5] Output: 5 Explanation: Increment by 1 (second element): [0, 0] to get [0, 1] (1 operation). Double all the elements: [0, 1] -&amp;gt; [0, 2] -&amp;gt; [0, 4] (2 operations).</description>
+    </item>
+    
+    <item>
+      <title>Minimum Number of Vertices to Reach All Nodes</title>
+      <link>https://jasonyangshadow.github.io/posts/minimum-number-of-vertices-to-reach-all-nodes/</link>
+      <pubDate>Wed, 26 Aug 2020 02:08:57 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/minimum-number-of-vertices-to-reach-all-nodes/</guid>
+      <description>https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/
+The solution is easy, just check the indegree value of all nodes.
+class Solution: def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -&amp;gt; List[int]: indegree = [0]*n for edge in edges: indegree[edge[1]] += 1 return [d for d in range(n) if indegree[d] == 0] </description>
+    </item>
     
     <item>
       <title>Split Array Largest Sum</title>
@@ -83,37 +116,6 @@ def solve(cents, target): dp = [0]*(target + 1) dp[0] = 1 #loop for all coins fo
       <guid>https://jasonyangshadow.github.io/posts/min-cost-path/</guid>
       <description>https://www.geeksforgeeks.org/min-cost-path-dp-6/
 def solve(matrix, n): dp = [[0]*(n+1) for _ in range(n+1)] dp[0][0] = matrix[0][0] for i in range(1, n+1): dp[0][i] = dp[0][i-1] + matrix[0][i] dp[i][0] = dp[i-1][0] + matrix[i][0] for i in range(1, n+1): for j in range(1, n+1): dp[i][j] = matrix[i][j] + min(dp[i-1][j], dp[i-1][j-1], dp[i][j-1]) return dp[-1][-1] </description>
-    </item>
-    
-    <item>
-      <title>Edit Distance</title>
-      <link>https://jasonyangshadow.github.io/posts/edit-distance/</link>
-      <pubDate>Fri, 14 Aug 2020 08:36:57 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/edit-distance/</guid>
-      <description>https://www.geeksforgeeks.org/edit-distance-dp-5/
-def solve(s1, s2, l1, l2): dp = [[0]*(l2 + 1) for _ in range(l1 + 1)] for i in range(l1 + 1): for j in range(l2 + 1): #return j,as i is zero, all left items should be added if i == 0: dp[i][j] = j elif j == 0: dp[i][j] = i elif s1[i-1] == s2[j-1]: dp[i][j] = dp[i-1][j-1] else: #different operations including remove, replace, insert dp[i][j] = 1 + min(dp[i-1][j], dp[i-1][j-1], dp[i][j-1]) return dp[-1][-1] cases = int(input()) l1,l2 = list(map(int, input().</description>
-    </item>
-    
-    <item>
-      <title>Longest Increasing Subsequence</title>
-      <link>https://jasonyangshadow.github.io/posts/longest-increasing-subsequence/</link>
-      <pubDate>Fri, 14 Aug 2020 07:18:53 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/longest-increasing-subsequence/</guid>
-      <description>Description: https://www.geeksforgeeks.org/longest-increasing-subsequence-dp-3/
-def solve(arr): n = len(arr) dp = [1]*n for i in range(1, n): for j in range(0, i): #only if current item is larger than any other previous item, then update its value if arr[i] &amp;gt; arr[j] and dp[i] &amp;lt; dp[j] + 1: dp[i] = dp[j] + 1 return max(dp) cases = int(input()) for _ in range(cases): nums = int(input()) data = list(map(int, input().split())) print(solve(data)) </description>
-    </item>
-    
-    <item>
-      <title>Minimum Cost to Cut a Stick</title>
-      <link>https://jasonyangshadow.github.io/posts/minimum-cost-to-cut-a-stick/</link>
-      <pubDate>Sun, 09 Aug 2020 21:48:00 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/minimum-cost-to-cut-a-stick/</guid>
-      <description>https://leetcode.com/contest/weekly-contest-201/problems/minimum-cost-to-cut-a-stick/
-The solution uses DFS+memo method, O(N^3)
-class Solution: def minCost(self, n: int, cuts: List[int]) -&amp;gt; int: memo = {} def helper(l, r): res = float(&amp;#34;inf&amp;#34;) key = str(l) +&amp;#34;_&amp;#34; + str(r) if key in memo: return memo[key] for i in range(0, len(cuts)): if cuts[i] &amp;lt;= l or cuts[i] &amp;gt;= r: continue cost = r - l res = min(res, helper(l, cuts[i]) + cost + helper(cuts[i], r)) res = 0 if res == float(&amp;#34;inf&amp;#34;) else res memo[key] = res return res return helper(0, n) </description>
     </item>
     
   </channel>
