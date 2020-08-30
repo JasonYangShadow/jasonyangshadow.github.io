@@ -6,8 +6,194 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 26 Aug 2020 17:38:59 +0900</lastBuildDate>
+		<lastBuildDate>Sun, 30 Aug 2020 23:30:47 +0900</lastBuildDate>
 		<atom:link href="https://jasonyangshadow.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Number of Ways to Reorder Array to Get Same Bst</title>
+			<link>https://jasonyangshadow.github.io/posts/number-of-ways-to-reorder-array-to-get-same-bst/</link>
+			<pubDate>Sun, 30 Aug 2020 23:30:47 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/number-of-ways-to-reorder-array-to-get-same-bst/</guid>
+			<description>https://leetcode.com/contest/weekly-contest-204/problems/number-of-ways-to-reorder-array-to-get-same-bst/
+We separate all the elements into two lists, depending on whether they are less than or more than the root. Then we recurse on those left and right sublists. The combination is for the macro ordering between left and right, and the recursive factors are for the internal ordering of left and right themselves. I minus 1 from the result because we don&amp;rsquo;t count the original ordering.
+from math import comb class Solution: def numOfWays(self, nums: List[int]) -&amp;gt; int: def f(nums): if len(nums) &amp;lt; 2: return 1 left = [ v for v in nums if v &amp;lt; nums[0]] right = [ v for v in nums if v &amp;gt; nums[0]] return comb(len(left) + len(right), len(right))*f(left)*f(right) return (f(nums) - 1) %(10**9 + 7) </description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/contest/weekly-contest-204/problems/number-of-ways-to-reorder-array-to-get-same-bst/">https://leetcode.com/contest/weekly-contest-204/problems/number-of-ways-to-reorder-array-to-get-same-bst/</a></p>
+<p>We separate all the elements into two lists, depending on whether they are less than or more than the root. Then we recurse on those left and right sublists. The combination is for the macro ordering between left and right, and the recursive factors are for the internal ordering of left and right themselves. I minus 1 from the result because we don&rsquo;t count the original ordering.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">comb</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">numOfWays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span> <span class="k">return</span> <span class="mi">1</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="p">[</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="p">[</span> <span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">return</span> <span class="n">comb</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">))</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">left</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">9</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Minimum Number of Days to Disconnect Island</title>
+			<link>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-disconnect-island/</link>
+			<pubDate>Sun, 30 Aug 2020 22:09:32 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-disconnect-island/</guid>
+			<description>https://leetcode.com/contest/weekly-contest-204/problems/minimum-number-of-days-to-disconnect-island/
+The solution comes from here: https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/discuss/819807/PROOFProof-of-for-any-ISLAND-only-needs-2-days-to-disconnect
+import copy class Solution: def minDays(self, grid: List[List[int]]) -&amp;gt; int: def helper(grid, i, j, m, n): if grid[i][j] == 0: return grid[i][j] = 0 if i - 1 &amp;gt;= 0: helper(grid, i-1, j, m,n) if i + 1 &amp;lt; m: helper(grid, i+1, j, m, n) if j - 1 &amp;gt;= 0: helper(grid, i, j - 1, m, n) if j + 1 &amp;lt; n: helper(grid, i, j + 1, m, n) def find_islands(grid): ret = 0 m, n = len(grid), len(grid[0]) for i in range(m): for j in range(n): if grid[i][j] == 1: ret += 1 helper(grid, i, j , m, n) return ret time = 0 #if we have 0 or more than 1 island at day 0, return day 0 gc = copy.</description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/contest/weekly-contest-204/problems/minimum-number-of-days-to-disconnect-island/">https://leetcode.com/contest/weekly-contest-204/problems/minimum-number-of-days-to-disconnect-island/</a></p>
+<p>The solution comes from here: <a href="https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/discuss/819807/PROOFProof-of-for-any-ISLAND-only-needs-2-days-to-disconnect">https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/discuss/819807/PROOFProof-of-for-any-ISLAND-only-needs-2-days-to-disconnect</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">copy</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">minDays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">grid</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">helper</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">helper</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">helper</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+                <span class="n">helper</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            
+        <span class="k">def</span> <span class="nf">find_islands</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">ret</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">helper</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">ret</span>
+        
+        <span class="n">time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1">#if we have 0 or more than 1 island at day 0, return day 0</span>
+        <span class="n">gc</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">find_islands</span><span class="p">(</span><span class="n">gc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">time</span>
+        
+        <span class="c1">#try to remove any land any see if it works</span>
+        <span class="n">time</span> <span class="o">=</span><span class="mi">1</span> 
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">)):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+                <span class="n">gc</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+                <span class="n">gc</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="n">find_islands</span><span class="p">(</span><span class="n">gc</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">time</span>
+        
+        <span class="k">return</span> <span class="mi">2</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Maximum Length of Subarray With Positive Product</title>
+			<link>https://jasonyangshadow.github.io/posts/maximum-length-of-subarray-with-positive-product/</link>
+			<pubDate>Sun, 30 Aug 2020 19:15:47 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/maximum-length-of-subarray-with-positive-product/</guid>
+			<description>Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.
+A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
+Return the maximum length of a subarray with positive product.
+Example 1: Input: nums = [1,-2,-3,4] Output: 4 Explanation: The array nums already has a positive product of 24. Example 2: Input: nums = [0,1,-2,-3,-4] Output: 3 Explanation: The longest subarray with positive product is [1,-2,-3] which has a product of 6.</description>
+			<content type="html"><![CDATA[<p>Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.</p>
+<p>A subarray of an array is a consecutive sequence of zero or more values taken out of that array.</p>
+<p>Return the maximum length of a subarray with positive product.</p>
+<pre><code>Example 1:
+
+Input: nums = [1,-2,-3,4]
+Output: 4
+Explanation: The array nums already has a positive product of 24.
+
+Example 2:
+
+Input: nums = [0,1,-2,-3,-4]
+Output: 3
+Explanation: The longest subarray with positive product is [1,-2,-3] which has a product of 6.
+Notice that we cannot include 0 in the subarray since that'll make the product 0 which is not positive.
+
+Example 3:
+
+Input: nums = [-1,-2,-3,0,1]
+Output: 2
+Explanation: The longest subarray with positive product is [-1,-2] or [-2,-3].
+
+Example 4:
+
+Input: nums = [-1,2]
+Output: 1
+
+Example 5:
+
+Input: nums = [1,2,3,5,-6,4,0,10]
+Output: 4
+
+ 
+
+Constraints:
+
+    1 &lt;= nums.length &lt;= 10^5
+    -10^9 &lt;= nums[i] &lt;= 10^9
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">getMaxLen</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="c1">#dp[i][0] indicates that the maximum positive product to make at position i, dp[i][1] indicates that the maximum negative product to make at position i</span>
+        <span class="n">dp</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">))]</span>
+        <span class="c1">#initialize the array</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        
+        <span class="n">res</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">cur</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#if previous negative arr exists</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">cur</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="c1">#if previous negative arr exists</span>
+                    <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+                                   
+        <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Most Visited Sector in a Circular Track</title>
+			<link>https://jasonyangshadow.github.io/posts/most-visited-sector-in-a-circular-track/</link>
+			<pubDate>Sat, 29 Aug 2020 20:44:31 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/most-visited-sector-in-a-circular-track/</guid>
+			<description>https://leetcode.com/problems/most-visited-sector-in-a-circular-track/
+We only need to care the start point and the end point. s ----- n 1 --------------------- n 1 --------------------- n 1 ----- e Explanation If start &amp;lt;= end, return the range [start, end]. If end &amp;lt; start, return the range [1, end] + range [start, n]. class Solution: def mostVisited(self, n: int, rounds: List[int]) -&amp;gt; List[int]: x, xx = rounds[0], rounds[-1] return list(range(x, xx+1)) if x &amp;lt;= xx else list(range(1, xx+1)) + list(range(x, n+1)) </description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/most-visited-sector-in-a-circular-track/">https://leetcode.com/problems/most-visited-sector-in-a-circular-track/</a></p>
+<pre><code>We only need to care the start point and the end point.
+
+                s ----- n
+1 --------------------- n
+1 --------------------- n
+1 ----- e
+
+
+Explanation
+
+If start &lt;= end, return the range [start, end].
+If end &lt; start, return the range [1, end] + range [start, n].
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">mostVisited</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">rounds</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">rounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">rounds</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">xx</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">xx</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">xx</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Detect Cycles in 2d Grid</title>

@@ -7,10 +7,54 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Wed, 26 Aug 2020 17:38:59 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2020 23:30:47 +0900</lastBuildDate>
     
 	<atom:link href="https://jasonyangshadow.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Number of Ways to Reorder Array to Get Same Bst</title>
+      <link>https://jasonyangshadow.github.io/posts/number-of-ways-to-reorder-array-to-get-same-bst/</link>
+      <pubDate>Sun, 30 Aug 2020 23:30:47 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/number-of-ways-to-reorder-array-to-get-same-bst/</guid>
+      <description>https://leetcode.com/contest/weekly-contest-204/problems/number-of-ways-to-reorder-array-to-get-same-bst/
+We separate all the elements into two lists, depending on whether they are less than or more than the root. Then we recurse on those left and right sublists. The combination is for the macro ordering between left and right, and the recursive factors are for the internal ordering of left and right themselves. I minus 1 from the result because we don&amp;rsquo;t count the original ordering.
+from math import comb class Solution: def numOfWays(self, nums: List[int]) -&amp;gt; int: def f(nums): if len(nums) &amp;lt; 2: return 1 left = [ v for v in nums if v &amp;lt; nums[0]] right = [ v for v in nums if v &amp;gt; nums[0]] return comb(len(left) + len(right), len(right))*f(left)*f(right) return (f(nums) - 1) %(10**9 + 7) </description>
+    </item>
+    
+    <item>
+      <title>Minimum Number of Days to Disconnect Island</title>
+      <link>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-disconnect-island/</link>
+      <pubDate>Sun, 30 Aug 2020 22:09:32 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-disconnect-island/</guid>
+      <description>https://leetcode.com/contest/weekly-contest-204/problems/minimum-number-of-days-to-disconnect-island/
+The solution comes from here: https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/discuss/819807/PROOFProof-of-for-any-ISLAND-only-needs-2-days-to-disconnect
+import copy class Solution: def minDays(self, grid: List[List[int]]) -&amp;gt; int: def helper(grid, i, j, m, n): if grid[i][j] == 0: return grid[i][j] = 0 if i - 1 &amp;gt;= 0: helper(grid, i-1, j, m,n) if i + 1 &amp;lt; m: helper(grid, i+1, j, m, n) if j - 1 &amp;gt;= 0: helper(grid, i, j - 1, m, n) if j + 1 &amp;lt; n: helper(grid, i, j + 1, m, n) def find_islands(grid): ret = 0 m, n = len(grid), len(grid[0]) for i in range(m): for j in range(n): if grid[i][j] == 1: ret += 1 helper(grid, i, j , m, n) return ret time = 0 #if we have 0 or more than 1 island at day 0, return day 0 gc = copy.</description>
+    </item>
+    
+    <item>
+      <title>Maximum Length of Subarray With Positive Product</title>
+      <link>https://jasonyangshadow.github.io/posts/maximum-length-of-subarray-with-positive-product/</link>
+      <pubDate>Sun, 30 Aug 2020 19:15:47 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/maximum-length-of-subarray-with-positive-product/</guid>
+      <description>Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.
+A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
+Return the maximum length of a subarray with positive product.
+Example 1: Input: nums = [1,-2,-3,4] Output: 4 Explanation: The array nums already has a positive product of 24. Example 2: Input: nums = [0,1,-2,-3,-4] Output: 3 Explanation: The longest subarray with positive product is [1,-2,-3] which has a product of 6.</description>
+    </item>
+    
+    <item>
+      <title>Most Visited Sector in a Circular Track</title>
+      <link>https://jasonyangshadow.github.io/posts/most-visited-sector-in-a-circular-track/</link>
+      <pubDate>Sat, 29 Aug 2020 20:44:31 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/most-visited-sector-in-a-circular-track/</guid>
+      <description>https://leetcode.com/problems/most-visited-sector-in-a-circular-track/
+We only need to care the start point and the end point. s ----- n 1 --------------------- n 1 --------------------- n 1 ----- e Explanation If start &amp;lt;= end, return the range [start, end]. If end &amp;lt; start, return the range [1, end] + range [start, n]. class Solution: def mostVisited(self, n: int, rounds: List[int]) -&amp;gt; List[int]: x, xx = rounds[0], rounds[-1] return list(range(x, xx+1)) if x &amp;lt;= xx else list(range(1, xx+1)) + list(range(x, n+1)) </description>
+    </item>
     
     <item>
       <title>Detect Cycles in 2d Grid</title>
@@ -76,50 +120,6 @@ class Solution: def maxDistance(self, position: List[int], m: int) -&amp;gt; int
       <description>There are n oranges in the kitchen and you decided to eat some of these oranges every day as follows:
 Eat one orange. If the number of remaining oranges (n) is divisible by 2 then you can eat n/2 oranges. If the number of remaining oranges (n) is divisible by 3 then you can eat 2*(n/3) oranges. You can only choose one of the actions per day.
 Return the minimum number of days to eat n oranges.</description>
-    </item>
-    
-    <item>
-      <title>LRU Cache</title>
-      <link>https://jasonyangshadow.github.io/posts/lru-cache/</link>
-      <pubDate>Sat, 15 Aug 2020 03:27:08 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/lru-cache/</guid>
-      <description>Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
-get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1. put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.</description>
-    </item>
-    
-    <item>
-      <title>Minimum Cost to Cut a Stick</title>
-      <link>https://jasonyangshadow.github.io/posts/minimum-cost-to-cut-a-stick/</link>
-      <pubDate>Sun, 09 Aug 2020 21:48:00 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/minimum-cost-to-cut-a-stick/</guid>
-      <description>https://leetcode.com/contest/weekly-contest-201/problems/minimum-cost-to-cut-a-stick/
-The solution uses DFS+memo method, O(N^3)
-class Solution: def minCost(self, n: int, cuts: List[int]) -&amp;gt; int: memo = {} def helper(l, r): res = float(&amp;#34;inf&amp;#34;) key = str(l) +&amp;#34;_&amp;#34; + str(r) if key in memo: return memo[key] for i in range(0, len(cuts)): if cuts[i] &amp;lt;= l or cuts[i] &amp;gt;= r: continue cost = r - l res = min(res, helper(l, cuts[i]) + cost + helper(cuts[i], r)) res = 0 if res == float(&amp;#34;inf&amp;#34;) else res memo[key] = res return res return helper(0, n) </description>
-    </item>
-    
-    <item>
-      <title>Maximum Number of Non Overlapping Subarrays With Sum Equals Target</title>
-      <link>https://jasonyangshadow.github.io/posts/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/</link>
-      <pubDate>Sun, 09 Aug 2020 21:46:41 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/maximum-number-of-non-overlapping-subarrays-with-sum-equals-target/</guid>
-      <description>Given an array nums and an integer target.
-Return the maximum number of non-empty non-overlapping subarrays such that the sum of values in each subarray is equal to target.
-Example 1: Input: nums = [1,1,1,1,1], target = 2 Output: 2 Explanation: There are 2 non-overlapping subarrays [1,1,1,1,1] with sum equals to target(2). Example 2: Input: nums = [-1,3,5,1,4,2,-9], target = 6 Output: 2 Explanation: There are 3 subarrays with sum equal to 6.</description>
-    </item>
-    
-    <item>
-      <title>Find Kth Bit in Nth Binary String</title>
-      <link>https://jasonyangshadow.github.io/posts/find-kth-bit-in-nth-binary-string/</link>
-      <pubDate>Sun, 09 Aug 2020 21:45:07 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/find-kth-bit-in-nth-binary-string/</guid>
-      <description>Given two positive integers n and k, the binary string Sn is formed as follows:
-S1 = &amp;ldquo;0&amp;rdquo; Si = Si-1 + &amp;ldquo;1&amp;rdquo; + reverse(invert(Si-1)) for i &amp;gt; 1 Where + denotes the concatenation operation, reverse(x) returns the reversed string x, and invert(x) inverts all the bits in x (0 changes to 1 and 1 changes to 0).
-For example, the first 4 strings in the above sequence are:
-S1 = &amp;ldquo;0&amp;rdquo; S2 = &amp;ldquo;011&amp;rdquo; S3 = &amp;ldquo;0111001&amp;rdquo; S4 = &amp;ldquo;011100110110001&amp;rdquo; Return the kth bit in Sn.</description>
     </item>
     
   </channel>
