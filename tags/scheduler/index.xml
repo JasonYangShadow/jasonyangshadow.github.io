@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>scheduler on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/scheduler/</link>
+    <link>https://jasonyangshadow.win/tags/scheduler/</link>
     <description>Recent content in scheduler on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Mon, 06 May 2019 02:28:17 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/scheduler/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/scheduler/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>golang scheduler</title>
-      <link>https://jasonyangshadow.github.io/posts/golang-os-scheduler/</link>
+      <link>https://jasonyangshadow.win/posts/golang-os-scheduler/</link>
       <pubDate>Mon, 06 May 2019 02:28:17 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/golang-os-scheduler/</guid>
+      <guid>https://jasonyangshadow.win/posts/golang-os-scheduler/</guid>
       <description>Recently I am interested in the implementation and mechanics behind the scheduler in Go, as I just finished developing one job schedule system several days ago. Thougth I could not share more details on that system, it is simple and motives me to dig deeper into golang itself.
 Found one really useful blog https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part1.html
 Generally speaking, go scheduler is really amazing by trunning I/O blocking work into CPU-bound work at the os level and it has great performance over traditional implementation when programs have to trigger system calls frequently.</description>

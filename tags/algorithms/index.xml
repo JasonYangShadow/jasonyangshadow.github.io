@@ -2,22 +2,55 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>algorithms on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/algorithms/</link>
+    <link>https://jasonyangshadow.win/tags/algorithms/</link>
     <description>Recent content in algorithms on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 23:30:47 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 13 Sep 2020 16:59:28 +0900</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Check if String Is Transformable With Substring Sort Operations</title>
+      <link>https://jasonyangshadow.win/posts/check-if-string-is-transformable-with-substring-sort-operations/</link>
+      <pubDate>Sun, 13 Sep 2020 16:59:28 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/check-if-string-is-transformable-with-substring-sort-operations/</guid>
+      <description>https://leetcode.com/problems/check-if-string-is-transformable-with-substring-sort-operations/
+solution:
+Very tricky question! Probably the hardest part is to realize that: For every digit in t you find the first occurrence in s. Call that current digit as key. We need to make sure in s, no digit smaller than key appears to the left. As we check one-by-one, we need to remove the digits we considered from s. In order to do this operation constant time, store all indices in reversed form using stack.</description>
+    </item>
+    
+    <item>
+      <title>Min Cost to Connect All Points</title>
+      <link>https://jasonyangshadow.win/posts/min-cost-to-connect-all-points/</link>
+      <pubDate>Sun, 13 Sep 2020 15:42:58 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/min-cost-to-connect-all-points/</guid>
+      <description>https://leetcode.com/problems/min-cost-to-connect-all-points/
+we can use a min-heap to get the miniest edge distance and do it in a loop
+class Solution: def minCostConnectPoints(self, points: List[List[int]]) -&amp;gt; int: dist = lambda p1, p2: abs(p1[0] - p2[0]) + abs(p1[1] - p2[1]) n, c = len(points), collections.defaultdict(list) #calculate the distance of every two points for i in range(n): for j in range(i + 1, n): d = dist(points[i], points[j]) c[i].append((d, j)) c[j].append((d, i)) cnt, ans, visited, heap = 1, 0, [0]*n, c[0] visited[0] = 1 heapq.</description>
+    </item>
+    
+    <item>
+      <title>Count Unhappy Friends</title>
+      <link>https://jasonyangshadow.win/posts/count-unhappy-friends/</link>
+      <pubDate>Sun, 13 Sep 2020 15:08:36 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.win/posts/count-unhappy-friends/</guid>
+      <description>You are given a list of preferences for n friends, where n is always even.
+For each person i, preferences[i] contains a list of friends sorted in the order of preference. In other words, a friend earlier in the list is more preferred than a friend later in the list. Friends in each list are denoted by integers from 0 to n-1.
+All the friends are divided into pairs. The pairings are given in a list pairs, where pairs[i] = [xi, yi] denotes xi is paired with yi and yi is paired with xi.</description>
+    </item>
+    
+    <item>
       <title>Number of Ways to Reorder Array to Get Same Bst</title>
-      <link>https://jasonyangshadow.github.io/posts/number-of-ways-to-reorder-array-to-get-same-bst/</link>
+      <link>https://jasonyangshadow.win/posts/number-of-ways-to-reorder-array-to-get-same-bst/</link>
       <pubDate>Sun, 30 Aug 2020 23:30:47 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/number-of-ways-to-reorder-array-to-get-same-bst/</guid>
+      <guid>https://jasonyangshadow.win/posts/number-of-ways-to-reorder-array-to-get-same-bst/</guid>
       <description>https://leetcode.com/contest/weekly-contest-204/problems/number-of-ways-to-reorder-array-to-get-same-bst/
 We separate all the elements into two lists, depending on whether they are less than or more than the root. Then we recurse on those left and right sublists. The combination is for the macro ordering between left and right, and the recursive factors are for the internal ordering of left and right themselves. I minus 1 from the result because we don&amp;rsquo;t count the original ordering.
 from math import comb class Solution: def numOfWays(self, nums: List[int]) -&amp;gt; int: def f(nums): if len(nums) &amp;lt; 2: return 1 left = [ v for v in nums if v &amp;lt; nums[0]] right = [ v for v in nums if v &amp;gt; nums[0]] return comb(len(left) + len(right), len(right))*f(left)*f(right) return (f(nums) - 1) %(10**9 + 7) </description>
@@ -25,10 +58,10 @@ from math import comb class Solution: def numOfWays(self, nums: List[int]) -&amp
     
     <item>
       <title>Minimum Number of Days to Disconnect Island</title>
-      <link>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-disconnect-island/</link>
+      <link>https://jasonyangshadow.win/posts/minimum-number-of-days-to-disconnect-island/</link>
       <pubDate>Sun, 30 Aug 2020 22:09:32 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/minimum-number-of-days-to-disconnect-island/</guid>
+      <guid>https://jasonyangshadow.win/posts/minimum-number-of-days-to-disconnect-island/</guid>
       <description>https://leetcode.com/contest/weekly-contest-204/problems/minimum-number-of-days-to-disconnect-island/
 The solution comes from here: https://leetcode.com/problems/minimum-number-of-days-to-disconnect-island/discuss/819807/PROOFProof-of-for-any-ISLAND-only-needs-2-days-to-disconnect
 import copy class Solution: def minDays(self, grid: List[List[int]]) -&amp;gt; int: def helper(grid, i, j, m, n): if grid[i][j] == 0: return grid[i][j] = 0 if i - 1 &amp;gt;= 0: helper(grid, i-1, j, m,n) if i + 1 &amp;lt; m: helper(grid, i+1, j, m, n) if j - 1 &amp;gt;= 0: helper(grid, i, j - 1, m, n) if j + 1 &amp;lt; n: helper(grid, i, j + 1, m, n) def find_islands(grid): ret = 0 m, n = len(grid), len(grid[0]) for i in range(m): for j in range(n): if grid[i][j] == 1: ret += 1 helper(grid, i, j , m, n) return ret time = 0 #if we have 0 or more than 1 island at day 0, return day 0 gc = copy.</description>
@@ -36,10 +69,10 @@ import copy class Solution: def minDays(self, grid: List[List[int]]) -&amp;gt; i
     
     <item>
       <title>Maximum Length of Subarray With Positive Product</title>
-      <link>https://jasonyangshadow.github.io/posts/maximum-length-of-subarray-with-positive-product/</link>
+      <link>https://jasonyangshadow.win/posts/maximum-length-of-subarray-with-positive-product/</link>
       <pubDate>Sun, 30 Aug 2020 19:15:47 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/maximum-length-of-subarray-with-positive-product/</guid>
+      <guid>https://jasonyangshadow.win/posts/maximum-length-of-subarray-with-positive-product/</guid>
       <description>Given an array of integers nums, find the maximum length of a subarray where the product of all its elements is positive.
 A subarray of an array is a consecutive sequence of zero or more values taken out of that array.
 Return the maximum length of a subarray with positive product.
@@ -48,30 +81,30 @@ Example 1: Input: nums = [1,-2,-3,4] Output: 4 Explanation: The array nums alrea
     
     <item>
       <title>Most Visited Sector in a Circular Track</title>
-      <link>https://jasonyangshadow.github.io/posts/most-visited-sector-in-a-circular-track/</link>
+      <link>https://jasonyangshadow.win/posts/most-visited-sector-in-a-circular-track/</link>
       <pubDate>Sat, 29 Aug 2020 20:44:31 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/most-visited-sector-in-a-circular-track/</guid>
+      <guid>https://jasonyangshadow.win/posts/most-visited-sector-in-a-circular-track/</guid>
       <description>https://leetcode.com/problems/most-visited-sector-in-a-circular-track/
 We only need to care the start point and the end point. s ----- n 1 --------------------- n 1 --------------------- n 1 ----- e Explanation If start &amp;lt;= end, return the range [start, end]. If end &amp;lt; start, return the range [1, end] + range [start, n]. class Solution: def mostVisited(self, n: int, rounds: List[int]) -&amp;gt; List[int]: x, xx = rounds[0], rounds[-1] return list(range(x, xx+1)) if x &amp;lt;= xx else list(range(1, xx+1)) + list(range(x, n+1)) </description>
     </item>
     
     <item>
       <title>Detect Cycles in 2d Grid</title>
-      <link>https://jasonyangshadow.github.io/posts/detect-cycles-in-2d-grid/</link>
+      <link>https://jasonyangshadow.win/posts/detect-cycles-in-2d-grid/</link>
       <pubDate>Wed, 26 Aug 2020 17:38:59 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/detect-cycles-in-2d-grid/</guid>
+      <guid>https://jasonyangshadow.win/posts/detect-cycles-in-2d-grid/</guid>
       <description>https://leetcode.com/problems/detect-cycles-in-2d-grid/
 class Solution: def containsCycle(self, grid: List[List[str]]) -&amp;gt; bool: v = set() m,n = len(grid), len(grid[0]) def dfs(node, parent): if node in v: return True v.add(node) nx, ny = node childs = [(cx, cy) for cx ,cy in [[nx + 1, ny], [nx - 1, ny], [nx, ny + 1], [nx, ny-1]] if 0&amp;lt;= cx &amp;lt; m and 0&amp;lt;= cy &amp;lt; n and grid[nx][ny] == grid[cx][cy] and (cx,cy) != parent] for x in childs: if dfs(x, node): return True return False for i in range(m): for j in range(n): if (i,j) in v: continue else: if dfs((i, j), None): return True return False class DSU: def __init__(self, N): self.</description>
     </item>
     
     <item>
       <title>Minimum Numbers of Function Calls to Make Target Array</title>
-      <link>https://jasonyangshadow.github.io/posts/minimum-numbers-of-function-calls-to-make-target-array/</link>
+      <link>https://jasonyangshadow.win/posts/minimum-numbers-of-function-calls-to-make-target-array/</link>
       <pubDate>Wed, 26 Aug 2020 15:02:31 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/minimum-numbers-of-function-calls-to-make-target-array/</guid>
+      <guid>https://jasonyangshadow.win/posts/minimum-numbers-of-function-calls-to-make-target-array/</guid>
       <description>Your task is to form an integer array nums from an initial array of zeros arr that is the same size as nums.
 Return the minimum number of function calls to make nums from arr.
 The answer is guaranteed to fit in a 32-bit signed integer.
@@ -80,45 +113,13 @@ Example 1: Input: nums = [1,5] Output: 5 Explanation: Increment by 1 (second ele
     
     <item>
       <title>Minimum Number of Vertices to Reach All Nodes</title>
-      <link>https://jasonyangshadow.github.io/posts/minimum-number-of-vertices-to-reach-all-nodes/</link>
+      <link>https://jasonyangshadow.win/posts/minimum-number-of-vertices-to-reach-all-nodes/</link>
       <pubDate>Wed, 26 Aug 2020 02:08:57 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/minimum-number-of-vertices-to-reach-all-nodes/</guid>
+      <guid>https://jasonyangshadow.win/posts/minimum-number-of-vertices-to-reach-all-nodes/</guid>
       <description>https://leetcode.com/problems/minimum-number-of-vertices-to-reach-all-nodes/
 The solution is easy, just check the indegree value of all nodes.
 class Solution: def findSmallestSetOfVertices(self, n: int, edges: List[List[int]]) -&amp;gt; List[int]: indegree = [0]*n for edge in edges: indegree[edge[1]] += 1 return [d for d in range(n) if indegree[d] == 0] </description>
-    </item>
-    
-    <item>
-      <title>Split Array Largest Sum</title>
-      <link>https://jasonyangshadow.github.io/posts/split-array-largest-sum/</link>
-      <pubDate>Thu, 20 Aug 2020 12:55:59 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/split-array-largest-sum/</guid>
-      <description>Given an array which consists of non-negative integers and an integer m, you can split the array into m non-empty continuous subarrays. Write an algorithm to minimize the largest sum among these m subarrays.
-Note: If n is the length of array, assume the following constraints are satisfied:
-1 ≤ n ≤ 1000 1 ≤ m ≤ min(50, n) Examples:
-Input: nums = [7,2,5,10,8] m = 2 Output: 18 Explanation: There are four ways to split nums into two subarrays.</description>
-    </item>
-    
-    <item>
-      <title>Palladium 2020</title>
-      <link>https://jasonyangshadow.github.io/posts/palladium-2020/</link>
-      <pubDate>Wed, 19 Aug 2020 14:05:11 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/palladium-2020/</guid>
-      <description>The problem description comes from here: https://pangeran-bottor.github.io/posts/2020/03/palladium-2020/
-def solution(H): N = len(H) maxl = [0]*(N + 1) maxr = [0]*(N + 1) cmax = 0 #max value from left for i in range(N): cmax = max(cmax, H[i]) maxl[i + 1] = cmax cmax = 0 #max value from the right for i in range(N-1, -1, -1): cmax = max(cmax, H[i]) maxr[i] = cmax result = float(&amp;#34;inf&amp;#34;) for i in range(N + 1): #get the minimum value of current position result = min(result, maxl[i]*i + maxr[i]*(N-i)) return result print(solution([1,1,7,6,6,6])) </description>
-    </item>
-    
-    <item>
-      <title>Magnetic Force Between Two Balls</title>
-      <link>https://jasonyangshadow.github.io/posts/magnetic-force-between-two-balls/</link>
-      <pubDate>Mon, 17 Aug 2020 01:52:55 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/magnetic-force-between-two-balls/</guid>
-      <description>https://leetcode.com/problems/magnetic-force-between-two-balls/
-class Solution: def maxDistance(self, position: List[int], m: int) -&amp;gt; int: n = len(position) position.sort() #calculate how many balls can be put into basket #what we need is to find proper count(d) == m #if count(d) &amp;gt; m, meaning that d is too small otherwise, d is too large. def count(d): ans, cur = 1, position[0] for i in range(1, n): if position[i] - cur &amp;gt;= d: ans += 1 cur = position[i] return ans l, r = 0, position[-1] - position[0] #binary search while l &amp;lt; r: mid = r - (r-l) // 2 if count(mid) &amp;gt;= m: l = mid else: r = mid - 1 return l </description>
     </item>
     
   </channel>

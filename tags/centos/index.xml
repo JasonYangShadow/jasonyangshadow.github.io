@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>centos on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/centos/</link>
+    <link>https://jasonyangshadow.win/tags/centos/</link>
     <description>Recent content in centos on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 13 Apr 2019 15:02:53 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>containerized centos 7 issues and solutions</title>
-      <link>https://jasonyangshadow.github.io/posts/containerized-centos-7-issues-and-solutions/</link>
+      <link>https://jasonyangshadow.win/posts/containerized-centos-7-issues-and-solutions/</link>
       <pubDate>Sat, 13 Apr 2019 15:02:53 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/containerized-centos-7-issues-and-solutions/</guid>
+      <guid>https://jasonyangshadow.win/posts/containerized-centos-7-issues-and-solutions/</guid>
       <description>Just make containerized centos 7 run properly in LPMX. Issue 1: Error during &amp;lsquo;yum update&amp;rsquo;
  error: db5 error(5) from dbenv-&amp;gt;open: Input/output error error: cannot open Packages index using db5 - Input/output error (5) error: cannot open Packages database in /var/lib/rpm CRITICAL:yum.main: Error: rpmdb open failed Solution 1: Rebuild rpm db
  rm -f /var/lib/rpm/__db* db_verify /var/lib/rpm/Packages rpm --rebuilddb yum clean all Issue 2: Error during &amp;lsquo;yum install xxx&amp;rsquo;

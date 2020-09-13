@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pattern on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/pattern/</link>
+    <link>https://jasonyangshadow.win/tags/pattern/</link>
     <description>Recent content in pattern on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sun, 12 Jan 2020 22:41:20 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/pattern/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/pattern/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>DP Pattern 3</title>
-      <link>https://jasonyangshadow.github.io/posts/dp-pattern-3/</link>
+      <link>https://jasonyangshadow.win/posts/dp-pattern-3/</link>
       <pubDate>Sun, 12 Jan 2020 22:41:20 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/dp-pattern-3/</guid>
+      <guid>https://jasonyangshadow.win/posts/dp-pattern-3/</guid>
       <description>DP Pattern 3 Merging Intervals
 Generate problem statement for this pattern
 Statement
@@ -29,10 +29,10 @@ Statement
     
     <item>
       <title>DP Pattern 2</title>
-      <link>https://jasonyangshadow.github.io/posts/dp-pattern-2/</link>
+      <link>https://jasonyangshadow.win/posts/dp-pattern-2/</link>
       <pubDate>Sun, 12 Jan 2020 21:54:51 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/dp-pattern-2/</guid>
+      <guid>https://jasonyangshadow.win/posts/dp-pattern-2/</guid>
       <description>DP Pattern 2 Distinct Ways
 Generate problem statement for this pattern
 Statement:
@@ -45,10 +45,10 @@ class Solution: def climbStairs(self, n: int) -&amp;gt; int: if n == 1: return 1
     
     <item>
       <title>DP pattern 1</title>
-      <link>https://jasonyangshadow.github.io/posts/dp-pattern-1/</link>
+      <link>https://jasonyangshadow.win/posts/dp-pattern-1/</link>
       <pubDate>Wed, 08 Jan 2020 15:46:36 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/dp-pattern-1/</guid>
+      <guid>https://jasonyangshadow.win/posts/dp-pattern-1/</guid>
       <description>DP Pattern(1) Dynamic Programming pattern for &amp;ldquo;Minimum(Maximum) cost/path/sum to reach the target&amp;rdquo;
 Statement
  Given a target find minimum(Maximum) cost/path/sum to reach the target

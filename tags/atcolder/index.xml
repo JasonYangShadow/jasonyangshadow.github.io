@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>atcolder on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/atcolder/</link>
+    <link>https://jasonyangshadow.win/tags/atcolder/</link>
     <description>Recent content in atcolder on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Sat, 08 Jun 2019 18:25:27 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/atcolder/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/atcolder/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Atcoder beginner solutions(C&#43;&#43; version)</title>
-      <link>https://jasonyangshadow.github.io/posts/atcoder-beginner-solutions-c-version/</link>
+      <link>https://jasonyangshadow.win/posts/atcoder-beginner-solutions-c-version/</link>
       <pubDate>Sat, 08 Jun 2019 18:25:27 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/atcoder-beginner-solutions-c-version/</guid>
+      <guid>https://jasonyangshadow.win/posts/atcoder-beginner-solutions-c-version/</guid>
       <description>Only for reference, they are not best solutions. ABC086A - Product #include &amp;lt;iostream&amp;gt;using namespace std; int main(){ int a, b; cin&amp;gt;&amp;gt;a&amp;gt;&amp;gt;b; if(a % 2 == 1 &amp;amp;&amp;amp; b % 2 == 1){ cout&amp;lt;&amp;lt;&amp;#34;Odd&amp;#34;&amp;lt;&amp;lt;endl; }else{ cout&amp;lt;&amp;lt;&amp;#34;Even&amp;#34;&amp;lt;&amp;lt;endl; } return 0; } 2.ABC081A - Placing Marbles #include &amp;lt;iostream&amp;gt;using namespace std; int main(){ string a; cin&amp;gt;&amp;gt;a; int ret = 0; for(auto x : a){ if(x == &amp;#39;1&amp;#39;){ ret++; } } cout&amp;lt;&amp;lt;ret&amp;lt;&amp;lt;endl; return 0; }</description>
     </item>
     

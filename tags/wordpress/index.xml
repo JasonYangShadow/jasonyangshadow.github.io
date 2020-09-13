@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>wordpress on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/wordpress/</link>
+    <link>https://jasonyangshadow.win/tags/wordpress/</link>
     <description>Recent content in wordpress on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Tue, 21 May 2019 06:51:55 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Vim plugin to post blogs remotely</title>
-      <link>https://jasonyangshadow.github.io/posts/vim-plugin-to-post-blogs-remotely/</link>
+      <link>https://jasonyangshadow.win/posts/vim-plugin-to-post-blogs-remotely/</link>
       <pubDate>Tue, 21 May 2019 06:51:55 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/vim-plugin-to-post-blogs-remotely/</guid>
+      <guid>https://jasonyangshadow.win/posts/vim-plugin-to-post-blogs-remotely/</guid>
       <description>I uses wordpress as my private website while still struggling on finding different tools to write blogs remotely. I tried different tools including wordpress electron app here and vscode with extension &amp;ldquo;markdown-mail&amp;rdquo;, still gets no luck.
 Wordpress desktop app is easy to setup and use, but it does not support markdown edit and preview, kind of disappoint. Markdown-mail is an extension published on vscode marketplace, I have tried it but gets no luck, it could not send my markdown doc to wordpress via email address.</description>
     </item>

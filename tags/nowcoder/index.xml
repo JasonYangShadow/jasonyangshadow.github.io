@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>nowcoder on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.github.io/tags/nowcoder/</link>
+    <link>https://jasonyangshadow.win/tags/nowcoder/</link>
     <description>Recent content in nowcoder on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Wed, 15 Jul 2020 01:38:03 +0900</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.github.io/tags/nowcoder/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.win/tags/nowcoder/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>String Compression Algorithms</title>
-      <link>https://jasonyangshadow.github.io/posts/string-compression-algorithms/</link>
+      <link>https://jasonyangshadow.win/posts/string-compression-algorithms/</link>
       <pubDate>Wed, 15 Jul 2020 01:38:03 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/string-compression-algorithms/</guid>
+      <guid>https://jasonyangshadow.win/posts/string-compression-algorithms/</guid>
       <description>https://www.nowcoder.com/questionTerminal/c27561e5b7e0441493adb9a54071888d
 import sys def decode(s): i = 0 x, y, z = -1, -1, -1 while i &amp;lt; len(s): if s[i] == &amp;#39;[&amp;#39;: x = i elif s[i] == &amp;#39;|&amp;#39;: y = i elif s[i] == &amp;#39;]&amp;#39;: z = i break i += 1 if x != -1 and y != -1 and z != -1: ss = s[y+1:z] * int(s[x+1:y]) s = s[:x] + ss + s[z+1:] return decode(s) return s for line in sys.</description>
     </item>
     
     <item>
       <title>Geohash Code</title>
-      <link>https://jasonyangshadow.github.io/posts/geohash-code/</link>
+      <link>https://jasonyangshadow.win/posts/geohash-code/</link>
       <pubDate>Tue, 14 Jul 2020 02:52:29 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/geohash-code/</guid>
+      <guid>https://jasonyangshadow.win/posts/geohash-code/</guid>
       <description>geohash编码：geohash常用于将二维的经纬度转换为字符串，分为两步：第一步是经纬度的二进制编码，第二步是base32转码。 此题考察</description>
     </item>
     
     <item>
       <title>Coins Combinations</title>
-      <link>https://jasonyangshadow.github.io/posts/coins-combinations/</link>
+      <link>https://jasonyangshadow.win/posts/coins-combinations/</link>
       <pubDate>Tue, 14 Jul 2020 01:04:11 +0900</pubDate>
       
-      <guid>https://jasonyangshadow.github.io/posts/coins-combinations/</guid>
+      <guid>https://jasonyangshadow.win/posts/coins-combinations/</guid>
       <description>小Q十分富有，拥有非常多的硬币，小Q拥有的硬币是有规律的，对于所有的非负整数K，小Q恰好各有两个面值为2^K的硬币，所以小Q拥有的硬币就是1</description>
     </item>
     
