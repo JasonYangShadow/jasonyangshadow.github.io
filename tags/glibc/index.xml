@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>glibc on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/glibc/</link>
+    <link>https://jasonyangshadow.github.io/tags/glibc/</link>
     <description>Recent content in glibc on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Tue, 21 Jan 2020 22:10:23 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/glibc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/glibc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>__libc_start_main usage</title>
-      <link>https://jasonyangshadow.win/posts/libc-start-main-usage/</link>
+      <link>https://jasonyangshadow.github.io/posts/libc-start-main-usage/</link>
       <pubDate>Tue, 21 Jan 2020 22:10:23 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/libc-start-main-usage/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/libc-start-main-usage/</guid>
       <description>__libc_start_main usage Recently I am working on hacking user&amp;rsquo;s main function. The reason why I need to do this is that we are unable to change argv0 via ld.so.
 Basically, there are two ways if you want to use execve syscall. http://man7.org/linux/man-pages/man2/execve.2.html
  Directy using execve with executable&amp;rsquo;s filename as the target (absolute path) and argv0(the first item in argv array) as the argument passed to &amp;ldquo;main&amp;rdquo; function.   argv is an array of argument strings passed to the new program.</description>

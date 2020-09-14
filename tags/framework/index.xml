@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>framework on Xu YANG&#39;s Personal Website</title>
-    <link>https://jasonyangshadow.win/tags/framework/</link>
+    <link>https://jasonyangshadow.github.io/tags/framework/</link>
     <description>Recent content in framework on Xu YANG&#39;s Personal Website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Thu, 23 Aug 2018 16:01:42 +0000</lastBuildDate>
     
-	<atom:link href="https://jasonyangshadow.win/tags/framework/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://jasonyangshadow.github.io/tags/framework/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>crawl and slack notification framework</title>
-      <link>https://jasonyangshadow.win/posts/crawl-and-slack-notification-framework-implemented-by-golang/</link>
+      <link>https://jasonyangshadow.github.io/posts/crawl-and-slack-notification-framework-implemented-by-golang/</link>
       <pubDate>Thu, 23 Aug 2018 16:01:42 +0000</pubDate>
       
-      <guid>https://jasonyangshadow.win/posts/crawl-and-slack-notification-framework-implemented-by-golang/</guid>
+      <guid>https://jasonyangshadow.github.io/posts/crawl-and-slack-notification-framework-implemented-by-golang/</guid>
       <description>An useful tool for my daily usage I use slack everyday, not only because it is required by our lab, but also it has good compatibilities acrossing different platforms(i.e, Linux, as I use Arch Linux as my main os). Long time ago, I developed notification system for telegram (an App similar to Slack), source code: https://github.com/JasonYangShadow/telegrambot, recently, as I keep working on writing golang code, I searched some documents and found that golang is an extremely good language for developing such notification system.</description>
     </item>
     
