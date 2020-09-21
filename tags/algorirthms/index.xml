@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorirthms on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.github.io/tags/algorirthms/</link>
+    <description>Recent content in algorirthms on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 21 Sep 2020 15:09:47 +0900</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.github.io/tags/algorirthms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Maximum Non Negative Product in a Matrix</title>
+      <link>https://jasonyangshadow.github.io/posts/maximum-non-negative-product-in-a-matrix/</link>
+      <pubDate>Mon, 21 Sep 2020 15:09:47 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/maximum-non-negative-product-in-a-matrix/</guid>
+      <description>You are given a rows x cols matrix grid. Initially, you are located at the top-left corner (0, 0), and in each step, you can only move right or down in the matrix.
+Among all possible paths starting from the top-left corner (0, 0) and ending in the bottom-right corner (rows - 1, cols - 1), find the path with the maximum non-negative product. The product of a path is the product of all integers in the grid cells visited along the path.</description>
+    </item>
+    
+  </channel>
+</rss>
