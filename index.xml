@@ -13,6 +13,27 @@
     
     
     <item>
+      <title>Producer Consumer Condition</title>
+      <link>https://jasonyangshadow.github.io/posts/producer-consumer-condition/</link>
+      <pubDate>Wed, 23 Sep 2020 03:19:36 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/producer-consumer-condition/</guid>
+      <description>package com.company; import java.util.ArrayList; import java.util.List; import java.util.concurrent.locks.Condition; import java.util.concurrent.locks.Lock; import java.util.concurrent.locks.ReentrantLock; class Message{ final private Lock lock = new ReentrantLock(); final private Condition c1 = lock.newCondition(); final private Condition c2 = lock.newCondition(); private String message; private boolean messageState; private boolean endIt; public void viewMessage(){ lock.lock(); try{ while(!messageState){ //if message is already consumed, hang myself up @c2  System.out.println(&amp;#34;c2 wait&amp;#34;); c2.await(); } System.out.println(&amp;#34;consume: &amp;#34; + message); messageState = false; c1.signal(); } catch (InterruptedException e) { e.</description>
+    </item>
+    
+    <item>
+      <title>Split a String Inot the Max Number of Unique Substrings</title>
+      <link>https://jasonyangshadow.github.io/posts/split-a-string-inot-the-max-number-of-unique-substrings/</link>
+      <pubDate>Mon, 21 Sep 2020 19:08:50 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/split-a-string-inot-the-max-number-of-unique-substrings/</guid>
+      <description>Given a string s, return the maximum number of unique substrings that the given string can be split into.
+You can split string s into any list of non-empty substrings, where the concatenation of the substrings forms the original string. However, you must split the substrings such that all of them are unique.
+A substring is a contiguous sequence of characters within a string.
+Example 1: Input: s = &amp;quot;ababccc&amp;quot; Output: 5 Explanation: One way to split maximally is [&#39;a&#39;, &#39;b&#39;, &#39;ab&#39;, &#39;c&#39;, &#39;cc&#39;].</description>
+    </item>
+    
+    <item>
       <title>Unique Paths 2</title>
       <link>https://jasonyangshadow.github.io/posts/unique-paths-2/</link>
       <pubDate>Mon, 21 Sep 2020 18:45:11 +0900</pubDate>
@@ -93,30 +114,6 @@ Example 1: Input: nums = [3,10,5,25,2,8] Output: 28 Explanation: The maximum res
       <guid>https://jasonyangshadow.github.io/posts/sentence-screen-fitting/</guid>
       <description>https://leetcode.com/problems/sentence-screen-fitting/
 class Solution: def wordsTyping(self, sentence: List[str], rows: int, cols: int) -&amp;gt; int: strs = &amp;#34;&amp;#34; for s in sentence: strs += s + &amp;#34; &amp;#34; start = 0 for r in range(rows): start = start + cols if strs[start % len(strs)] == &amp;#34; &amp;#34;: start += 1 else: while start &amp;gt; 0 and strs[(start - 1) % len(strs)] != &amp;#34; &amp;#34;: start -= 1 return start // len(strs) </description>
-    </item>
-    
-    <item>
-      <title>Group Shifted Strings</title>
-      <link>https://jasonyangshadow.github.io/posts/group-shifted-strings/</link>
-      <pubDate>Wed, 16 Sep 2020 11:39:07 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/group-shifted-strings/</guid>
-      <description>Given a string, we can &amp;ldquo;shift&amp;rdquo; each of its letter to its successive letter, for example: &amp;ldquo;abc&amp;rdquo; -&amp;gt; &amp;ldquo;bcd&amp;rdquo;. We can keep &amp;ldquo;shifting&amp;rdquo; which forms the sequence:
-&amp;ldquo;abc&amp;rdquo; -&amp;gt; &amp;ldquo;bcd&amp;rdquo; -&amp;gt; &amp;hellip; -&amp;gt; &amp;ldquo;xyz&amp;rdquo;
-Given a list of non-empty strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
-Example:
-Input: [&amp;ldquo;abc&amp;rdquo;, &amp;ldquo;bcd&amp;rdquo;, &amp;ldquo;acef&amp;rdquo;, &amp;ldquo;xyz&amp;rdquo;, &amp;ldquo;az&amp;rdquo;, &amp;ldquo;ba&amp;rdquo;, &amp;ldquo;a&amp;rdquo;, &amp;ldquo;z&amp;rdquo;], Output: [ [&amp;ldquo;abc&amp;rdquo;,&amp;ldquo;bcd&amp;rdquo;,&amp;ldquo;xyz&amp;rdquo;], [&amp;ldquo;az&amp;rdquo;,&amp;ldquo;ba&amp;rdquo;], [&amp;ldquo;acef&amp;rdquo;], [&amp;ldquo;a&amp;rdquo;,&amp;ldquo;z&amp;rdquo;] ]</description>
-    </item>
-    
-    <item>
-      <title>Check if String Is Transformable With Substring Sort Operations</title>
-      <link>https://jasonyangshadow.github.io/posts/check-if-string-is-transformable-with-substring-sort-operations/</link>
-      <pubDate>Sun, 13 Sep 2020 16:59:28 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/check-if-string-is-transformable-with-substring-sort-operations/</guid>
-      <description>https://leetcode.com/problems/check-if-string-is-transformable-with-substring-sort-operations/
-solution:
-Very tricky question! Probably the hardest part is to realize that: For every digit in t you find the first occurrence in s. Call that current digit as key. We need to make sure in s, no digit smaller than key appears to the left. As we check one-by-one, we need to remove the digits we considered from s. In order to do this operation constant time, store all indices in reversed form using stack.</description>
     </item>
     
   </channel>

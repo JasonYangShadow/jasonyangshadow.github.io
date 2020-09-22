@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 21 Sep 2020 18:45:11 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 21 Sep 2020 19:08:50 +0900</lastBuildDate>
     
 	<atom:link href="https://jasonyangshadow.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Split a String Inot the Max Number of Unique Substrings</title>
+      <link>https://jasonyangshadow.github.io/posts/split-a-string-inot-the-max-number-of-unique-substrings/</link>
+      <pubDate>Mon, 21 Sep 2020 19:08:50 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/split-a-string-inot-the-max-number-of-unique-substrings/</guid>
+      <description>Given a string s, return the maximum number of unique substrings that the given string can be split into.
+You can split string s into any list of non-empty substrings, where the concatenation of the substrings forms the original string. However, you must split the substrings such that all of them are unique.
+A substring is a contiguous sequence of characters within a string.
+Example 1: Input: s = &amp;quot;ababccc&amp;quot; Output: 5 Explanation: One way to split maximally is [&#39;a&#39;, &#39;b&#39;, &#39;ab&#39;, &#39;c&#39;, &#39;cc&#39;].</description>
+    </item>
     
     <item>
       <title>Unique Paths 2</title>
@@ -106,17 +118,6 @@ class Solution: def wordsTyping(self, sentence: List[str], rows: int, cols: int)
 Given a list of non-empty strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
 Example:
 Input: [&amp;ldquo;abc&amp;rdquo;, &amp;ldquo;bcd&amp;rdquo;, &amp;ldquo;acef&amp;rdquo;, &amp;ldquo;xyz&amp;rdquo;, &amp;ldquo;az&amp;rdquo;, &amp;ldquo;ba&amp;rdquo;, &amp;ldquo;a&amp;rdquo;, &amp;ldquo;z&amp;rdquo;], Output: [ [&amp;ldquo;abc&amp;rdquo;,&amp;ldquo;bcd&amp;rdquo;,&amp;ldquo;xyz&amp;rdquo;], [&amp;ldquo;az&amp;rdquo;,&amp;ldquo;ba&amp;rdquo;], [&amp;ldquo;acef&amp;rdquo;], [&amp;ldquo;a&amp;rdquo;,&amp;ldquo;z&amp;rdquo;] ]</description>
-    </item>
-    
-    <item>
-      <title>Check if String Is Transformable With Substring Sort Operations</title>
-      <link>https://jasonyangshadow.github.io/posts/check-if-string-is-transformable-with-substring-sort-operations/</link>
-      <pubDate>Sun, 13 Sep 2020 16:59:28 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/check-if-string-is-transformable-with-substring-sort-operations/</guid>
-      <description>https://leetcode.com/problems/check-if-string-is-transformable-with-substring-sort-operations/
-solution:
-Very tricky question! Probably the hardest part is to realize that: For every digit in t you find the first occurrence in s. Call that current digit as key. We need to make sure in s, no digit smaller than key appears to the left. As we check one-by-one, we need to remove the digits we considered from s. In order to do this operation constant time, store all indices in reversed form using stack.</description>
     </item>
     
   </channel>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#494f5c">
+	<meta name="msapplication-TileColor" content="#494f5c">
+<meta itemprop="name" content="Producer Consumer Condition">
+<meta itemprop="description" content="package com.company; import java.util.ArrayList; import java.util.List; import java.util.concurrent.locks.Condition; import java.util.concurrent.locks.Lock; import java.util.concurrent.locks.ReentrantLock; class Message{ final private Lock lock = new ReentrantLock(); final private Condition c1 = lock.newCondition(); final private Condition c2 = lock.newCondition(); private String message; private boolean messageState; private boolean endIt; public void viewMessage(){ lock.lock(); try{ while(!messageState){ //if message is already consumed, hang myself up @c2  System.out.println(&#34;c2 wait&#34;); c2.await(); } System.out.println(&#34;consume: &#34; &#43; message); messageState = false; c1.signal(); } catch (InterruptedException e) { e.">
+<meta itemprop="datePublished" content="2020-09-23T03:19:36&#43;09:00" />
+<meta itemprop="dateModified" content="2020-09-23T03:19:36&#43;09:00" />
+<meta itemprop="wordCount" content="233">
+
+
+
+<meta itemprop="keywords" content="algorithms," /><meta property="og:title" content="Producer Consumer Condition" />
+<meta property="og:description" content="package com.company; import java.util.ArrayList; import java.util.List; import java.util.concurrent.locks.Condition; import java.util.concurrent.locks.Lock; import java.util.concurrent.locks.ReentrantLock; class Message{ final private Lock lock = new ReentrantLock(); final private Condition c1 = lock.newCondition(); final private Condition c2 = lock.newCondition(); private String message; private boolean messageState; private boolean endIt; public void viewMessage(){ lock.lock(); try{ while(!messageState){ //if message is already consumed, hang myself up @c2  System.out.println(&#34;c2 wait&#34;); c2.await(); } System.out.println(&#34;consume: &#34; &#43; message); messageState = false; c1.signal(); } catch (InterruptedException e) { e." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jasonyangshadow.github.io/posts/producer-consumer-condition/" />
+<meta property="article:published_time" content="2020-09-23T03:19:36+09:00" />
+<meta property="article:modified_time" content="2020-09-23T03:19:36+09:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Producer Consumer Condition"/>
+<meta name="twitter:description" content="package com.company; import java.util.ArrayList; import java.util.List; import java.util.concurrent.locks.Condition; import java.util.concurrent.locks.Lock; import java.util.concurrent.locks.ReentrantLock; class Message{ final private Lock lock = new ReentrantLock(); final private Condition c1 = lock.newCondition(); final private Condition c2 = lock.newCondition(); private String message; private boolean messageState; private boolean endIt; public void viewMessage(){ lock.lock(); try{ while(!messageState){ //if message is already consumed, hang myself up @c2  System.out.println(&#34;c2 wait&#34;); c2.await(); } System.out.println(&#34;consume: &#34; &#43; message); messageState = false; c1.signal(); } catch (InterruptedException e) { e."/>
+
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+	<link rel="shortcut icon" href="/favicon.ico">
+
+	<title>Producer Consumer Condition</title>
+	<link rel="stylesheet" href="https://jasonyangshadow.github.io/css/style.min.eac77496566fd7d5768fd650ddb0b2b181ca6a2d7c5fdd6fe6b8ba4bf47e566f.css" integrity="sha256-6sd0llZv19V2j9ZQ3bCysYHKai18X91v5ri6S/R+Vm8=" crossorigin="anonymous">
+	
+</head>
+
+<body id="page">
+	
+	<header id="site-header" class="animated slideInUp">
+		<div class="hdr-wrapper section-inner">
+			<div class="hdr-left">
+				<div class="site-branding">
+					<a href="https://jasonyangshadow.github.io">Xu YANG&#39;s Personal Website</a>
+				</div>
+				<nav class="site-nav hide-in-mobile">
+					
+				<a href="https://jasonyangshadow.github.io/posts/">Posts</a>
+				<a href="https://jasonyangshadow.github.io/about/">About</a>
+
+				</nav>
+			</div>
+			<div class="hdr-right hdr-icons">
+				<span class="hdr-social hide-in-mobile"><a href="https://twitter.com/jasonyangshadow" target="_blank" rel="noopener me" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a><a href="https://github.com/jasonyangshadow" target="_blank" rel="noopener me" title="Github"><svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a></span><button id="menu-btn" class="hdr-btn" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+			</div>
+		</div>
+	</header>
+	<div id="mobile-menu" class="animated fast">
+		<ul>
+			<li><a href="https://jasonyangshadow.github.io/posts/">Posts</a></li>
+			<li><a href="https://jasonyangshadow.github.io/about/">About</a></li>
+		</ul>
+	</div>
+
+
+	<main class="site-main section-inner animated fadeIn faster">
+		<article class="thin">
+			<header class="post-header">
+				<div class="post-meta"><span>Sep 23, 2020</span></div>
+				<h1>Producer Consumer Condition</h1>
+			</header>
+			<div class="content">
+				<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kn">package</span> <span class="nn">com.company</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.locks.Condition</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.locks.Lock</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.concurrent.locks.ReentrantLock</span><span class="o">;</span>
+
+<span class="kd">class</span> <span class="nc">Message</span><span class="o">{</span>
+    <span class="kd">final</span> <span class="kd">private</span> <span class="n">Lock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ReentrantLock</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="kd">private</span> <span class="n">Condition</span> <span class="n">c1</span> <span class="o">=</span> <span class="n">lock</span><span class="o">.</span><span class="na">newCondition</span><span class="o">();</span>
+    <span class="kd">final</span> <span class="kd">private</span> <span class="n">Condition</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">lock</span><span class="o">.</span><span class="na">newCondition</span><span class="o">();</span>
+
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">message</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">messageState</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">endIt</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">viewMessage</span><span class="o">(){</span>
+        <span class="n">lock</span><span class="o">.</span><span class="na">lock</span><span class="o">();</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="k">while</span><span class="o">(!</span><span class="n">messageState</span><span class="o">){</span>
+                <span class="c1">//if message is already consumed, hang myself up @c2
+</span><span class="c1"></span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;c2 wait&#34;</span><span class="o">);</span>
+                <span class="n">c2</span><span class="o">.</span><span class="na">await</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;consume: &#34;</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+            <span class="n">messageState</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+            <span class="n">c1</span><span class="o">.</span><span class="na">signal</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">lock</span><span class="o">.</span><span class="na">unlock</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">publishMessage</span><span class="o">(</span><span class="n">String</span> <span class="n">message</span><span class="o">){</span>
+        <span class="n">lock</span><span class="o">.</span><span class="na">lock</span><span class="o">();</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="k">while</span><span class="o">(</span><span class="n">messageState</span><span class="o">){</span>
+                <span class="c1">//if there is already a message produced, hang myself up @c1
+</span><span class="c1"></span>                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;c1 wait&#34;</span><span class="o">);</span>
+                <span class="n">c1</span><span class="o">.</span><span class="na">await</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&#34;produce: &#34;</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">;</span>
+            <span class="n">messageState</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="n">c2</span><span class="o">.</span><span class="na">signal</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+            <span class="n">lock</span><span class="o">.</span><span class="na">unlock</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isEndIt</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="n">endIt</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setEndIt</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">endIt</span><span class="o">){</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">endIt</span> <span class="o">=</span> <span class="n">endIt</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MessageProducer</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Message</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MessageProducer</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">){</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">msgs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;();</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;hello&#34;</span><span class="o">);</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;current project is complete&#34;</span><span class="o">);</span>
+        <span class="n">msgs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">&#34;hahaahahah&#34;</span><span class="o">);</span>
+
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">msg</span> <span class="o">:</span> <span class="n">msgs</span><span class="o">){</span>
+            <span class="n">message</span><span class="o">.</span><span class="na">publishMessage</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="n">message</span><span class="o">.</span><span class="na">setEndIt</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MessageViewer</span> <span class="kd">implements</span> <span class="n">Runnable</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="n">Message</span> <span class="n">message</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">MessageViewer</span><span class="o">(</span><span class="n">Message</span> <span class="n">msg</span><span class="o">){</span>
+       <span class="n">message</span> <span class="o">=</span> <span class="n">msg</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">while</span><span class="o">(!</span><span class="n">message</span><span class="o">.</span><span class="na">isEndIt</span><span class="o">()){</span>
+            <span class="n">message</span><span class="o">.</span><span class="na">viewMessage</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">){</span>
+        <span class="n">Message</span> <span class="n">msg</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Message</span><span class="o">();</span>
+        <span class="n">Thread</span> <span class="n">mp</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageProducer</span><span class="o">(</span><span class="n">msg</span><span class="o">));</span>
+        <span class="n">Thread</span> <span class="n">mv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">MessageViewer</span><span class="o">(</span><span class="n">msg</span><span class="o">));</span>
+        <span class="n">mp</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">mv</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+			</div>
+			<hr class="post-end">
+			<footer class="post-info">
+				<p>
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://jasonyangshadow.github.io/tags/algorithms">algorithms</a></span>
+				</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>233 Words</p>
+				<p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-09-23 03:19 &#43;0900</p>
+			</footer>
+		</article>
+		<div class="post-nav thin">
+			<a class="prev-post" href="https://jasonyangshadow.github.io/posts/split-a-string-inot-the-max-number-of-unique-substrings/">
+				<span class="post-nav-label">Older&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span><br><span>Split a String Inot the Max Number of Unique Substrings</span>
+			</a>
+		</div>
+		<div id="comments" class="thin">
+</div>
+	</main>
+
+	<footer id="site-footer" class="section-inner thin animated fadeIn faster">
+		<p>&copy; 2020 <a href="https://jasonyangshadow.github.io">Xu YANG</a> &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a></p>
+		<p>
+			Made with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> &#183; Theme <a href="https://github.com/Track3/hermit" target="_blank" rel="noopener">Hermit</a> &#183; <a href="https://jasonyangshadow.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a>
+		</p>
+	</footer>
+
+
+
+	<script src="https://jasonyangshadow.github.io/js/bundle.min.4a9a0ac3d2217822c7865b4161e6c2a71de1d70492264337755427898dd718f6.js" integrity="sha256-SpoKw9IheCLHhltBYebCpx3h1wSSJkM3dVQniY3XGPY=" crossorigin="anonymous"></script>
+	
+
+</body>
+
+</html>
