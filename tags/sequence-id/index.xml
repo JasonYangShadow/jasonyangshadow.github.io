@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sequence id on Xu YANG&#39;s Personal Website</title>
+    <link>https://jasonyangshadow.github.io/tags/sequence-id/</link>
+    <description>Recent content in sequence id on Xu YANG&#39;s Personal Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Mon, 28 Sep 2020 02:25:13 +0900</lastBuildDate>
+    
+	<atom:link href="https://jasonyangshadow.github.io/tags/sequence-id/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Snow Flake Id</title>
+      <link>https://jasonyangshadow.github.io/posts/snow-flake-id/</link>
+      <pubDate>Mon, 28 Sep 2020 02:25:13 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/snow-flake-id/</guid>
+      <description>public class SnowFlakeShortUrl { /** * 起始的时间戳 */ private final static long START_TIMESTAMP = 1480166465631L; /** * 每一部分占用的位数 */ private final static long SEQUENCE_BIT = 12; //序列号占用的位数 private final static long MACHINE_BIT = 5; //机器标识占用的位数 private final static</description>
+    </item>
+    
+  </channel>
+</rss>

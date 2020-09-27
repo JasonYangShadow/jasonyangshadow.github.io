@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>Snow Flake Id</title>
+      <link>https://jasonyangshadow.github.io/posts/snow-flake-id/</link>
+      <pubDate>Mon, 28 Sep 2020 02:25:13 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/snow-flake-id/</guid>
+      <description>public class SnowFlakeShortUrl { /** * 起始的时间戳 */ private final static long START_TIMESTAMP = 1480166465631L; /** * 每一部分占用的位数 */ private final static long SEQUENCE_BIT = 12; //序列号占用的位数 private final static long MACHINE_BIT = 5; //机器标识占用的位数 private final static</description>
+    </item>
+    
+    <item>
       <title>Throne Inheritance</title>
       <link>https://jasonyangshadow.github.io/posts/throne-inheritance/</link>
       <pubDate>Sun, 27 Sep 2020 13:13:01 +0900</pubDate>
@@ -105,15 +114,6 @@ Example 1: Input: nums = [3,10,5,25,2,8] Output: 28 Explanation: The maximum res
       <guid>https://jasonyangshadow.github.io/posts/sum-of-root-to-leaf-binary-numbers/</guid>
       <description>https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
 # Definition for a binary tree node. # class TreeNode: # def __init__(self, val=0, left=None, right=None): # self.val = val # self.left = left # self.right = right class Solution: def sumRootToLeaf(self, root: TreeNode) -&amp;gt; int: root_to_leaf = 0 stack = [(root, 0)] while stack: root, curr_num = stack.pop() if root is not None: curr_num = (curr_num&amp;lt;&amp;lt;1) | root.val if root.left is None and root.right is None: root_to_leaf += curr_num else: stack.</description>
-    </item>
-    
-    <item>
-      <title>Number of Islands 2</title>
-      <link>https://jasonyangshadow.github.io/posts/number-of-islands-2/</link>
-      <pubDate>Thu, 17 Sep 2020 12:52:38 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/number-of-islands-2/</guid>
-      <description>A 2d grid map of m rows and n columns is initially filled with water. We may perform an addLand operation which turns the water at position (row, col) into a land. Given a list of positions to operate, count the number of islands after each addLand operation. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</description>
     </item>
     
   </channel>

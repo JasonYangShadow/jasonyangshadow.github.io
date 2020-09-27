@@ -6,8 +6,120 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Sun, 27 Sep 2020 13:13:01 +0900</lastBuildDate>
+		<lastBuildDate>Mon, 28 Sep 2020 02:25:13 +0900</lastBuildDate>
 		<atom:link href="https://jasonyangshadow.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Snow Flake Id</title>
+			<link>https://jasonyangshadow.github.io/posts/snow-flake-id/</link>
+			<pubDate>Mon, 28 Sep 2020 02:25:13 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/snow-flake-id/</guid>
+			<description>public class SnowFlakeShortUrl { /** * 起始的时间戳 */ private final static long START_TIMESTAMP = 1480166465631L; /** * 每一部分占用的位数 */ private final static long SEQUENCE_BIT = 12; //序列号占用的位数 private final static long MACHINE_BIT = 5; //机器标识占用的位数 private final static</description>
+			<content type="html"><![CDATA[<div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SnowFlakeShortUrl</span> <span class="o">{</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 起始的时间戳
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">START_TIMESTAMP</span> <span class="o">=</span> <span class="n">1480166465631L</span><span class="o">;</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 每一部分占用的位数
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">SEQUENCE_BIT</span> <span class="o">=</span> <span class="n">12</span><span class="o">;</span>   <span class="c1">//序列号占用的位数
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">MACHINE_BIT</span> <span class="o">=</span> <span class="n">5</span><span class="o">;</span>     <span class="c1">//机器标识占用的位数
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">DATA_CENTER_BIT</span> <span class="o">=</span> <span class="n">5</span><span class="o">;</span> <span class="c1">//数据中心占用的位数
+</span><span class="c1"></span>
+    <span class="cm">/**
+</span><span class="cm">     * 每一部分的最大值
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">MAX_SEQUENCE</span> <span class="o">=</span> <span class="o">-</span><span class="n">1L</span> <span class="o">^</span> <span class="o">(-</span><span class="n">1L</span> <span class="o">&lt;&lt;</span> <span class="n">SEQUENCE_BIT</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">MAX_MACHINE_NUM</span> <span class="o">=</span> <span class="o">-</span><span class="n">1L</span> <span class="o">^</span> <span class="o">(-</span><span class="n">1L</span> <span class="o">&lt;&lt;</span> <span class="n">MACHINE_BIT</span><span class="o">);</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">MAX_DATA_CENTER_NUM</span> <span class="o">=</span> <span class="o">-</span><span class="n">1L</span> <span class="o">^</span> <span class="o">(-</span><span class="n">1L</span> <span class="o">&lt;&lt;</span> <span class="n">DATA_CENTER_BIT</span><span class="o">);</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 每一部分向左的位移
+</span><span class="cm">     */</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">MACHINE_LEFT</span> <span class="o">=</span> <span class="n">SEQUENCE_BIT</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">DATA_CENTER_LEFT</span> <span class="o">=</span> <span class="n">SEQUENCE_BIT</span> <span class="o">+</span> <span class="n">MACHINE_BIT</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="kt">long</span> <span class="n">TIMESTAMP_LEFT</span> <span class="o">=</span> <span class="n">DATA_CENTER_LEFT</span> <span class="o">+</span> <span class="n">DATA_CENTER_BIT</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">dataCenterId</span><span class="o">;</span>  <span class="c1">//数据中心
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">long</span> <span class="n">machineId</span><span class="o">;</span>     <span class="c1">//机器标识
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">long</span> <span class="n">sequence</span> <span class="o">=</span> <span class="n">0L</span><span class="o">;</span> <span class="c1">//序列号
+</span><span class="c1"></span>    <span class="kd">private</span> <span class="kt">long</span> <span class="n">lastTimeStamp</span> <span class="o">=</span> <span class="o">-</span><span class="n">1L</span><span class="o">;</span>  <span class="c1">//上一次时间戳
+</span><span class="c1"></span>
+    <span class="kd">private</span> <span class="kt">long</span> <span class="nf">getNextMill</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">mill</span> <span class="o">=</span> <span class="n">getNewTimeStamp</span><span class="o">();</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">mill</span> <span class="o">&lt;=</span> <span class="n">lastTimeStamp</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">mill</span> <span class="o">=</span> <span class="n">getNewTimeStamp</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">mill</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">long</span> <span class="nf">getNewTimeStamp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">System</span><span class="o">.</span><span class="na">currentTimeMillis</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 根据指定的数据中心ID和机器标志ID生成指定的序列号
+</span><span class="cm">     *
+</span><span class="cm">     * @param dataCenterId 数据中心ID
+</span><span class="cm">     * @param machineId    机器标志ID
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="nf">SnowFlakeShortUrl</span><span class="o">(</span><span class="kt">long</span> <span class="n">dataCenterId</span><span class="o">,</span> <span class="kt">long</span> <span class="n">machineId</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">dataCenterId</span> <span class="o">&gt;</span> <span class="n">MAX_DATA_CENTER_NUM</span> <span class="o">||</span> <span class="n">dataCenterId</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;DtaCenterId can&#39;t be greater than MAX_DATA_CENTER_NUM or less than 0！&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">machineId</span> <span class="o">&gt;</span> <span class="n">MAX_MACHINE_NUM</span> <span class="o">||</span> <span class="n">machineId</span> <span class="o">&lt;</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&#34;MachineId can&#39;t be greater than MAX_MACHINE_NUM or less than 0！&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">dataCenterId</span> <span class="o">=</span> <span class="n">dataCenterId</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">machineId</span> <span class="o">=</span> <span class="n">machineId</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+</span><span class="cm">     * 产生下一个ID
+</span><span class="cm">     *
+</span><span class="cm">     * @return
+</span><span class="cm">     */</span>
+    <span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">long</span> <span class="nf">nextId</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">long</span> <span class="n">currTimeStamp</span> <span class="o">=</span> <span class="n">getNewTimeStamp</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">currTimeStamp</span> <span class="o">&lt;</span> <span class="n">lastTimeStamp</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="n">RuntimeException</span><span class="o">(</span><span class="s">&#34;Clock moved backwards.  Refusing to generate id&#34;</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">currTimeStamp</span> <span class="o">==</span> <span class="n">lastTimeStamp</span><span class="o">)</span> <span class="o">{</span>
+            <span class="c1">//相同毫秒内，序列号自增
+</span><span class="c1"></span>            <span class="n">sequence</span> <span class="o">=</span> <span class="o">(</span><span class="n">sequence</span> <span class="o">+</span> <span class="n">1</span><span class="o">)</span> <span class="o">&amp;</span> <span class="n">MAX_SEQUENCE</span><span class="o">;</span>
+            <span class="c1">//同一毫秒的序列数已经达到最大
+</span><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">sequence</span> <span class="o">==</span> <span class="n">0L</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">currTimeStamp</span> <span class="o">=</span> <span class="n">getNextMill</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+            <span class="c1">//不同毫秒内，序列号置为0
+</span><span class="c1"></span>            <span class="n">sequence</span> <span class="o">=</span> <span class="n">0L</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">lastTimeStamp</span> <span class="o">=</span> <span class="n">currTimeStamp</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="o">(</span><span class="n">currTimeStamp</span> <span class="o">-</span> <span class="n">START_TIMESTAMP</span><span class="o">)</span> <span class="o">&lt;&lt;</span> <span class="n">TIMESTAMP_LEFT</span> <span class="c1">//时间戳部分
+</span><span class="c1"></span>                <span class="o">|</span> <span class="n">dataCenterId</span> <span class="o">&lt;&lt;</span> <span class="n">DATA_CENTER_LEFT</span>       <span class="c1">//数据中心部分
+</span><span class="c1"></span>                <span class="o">|</span> <span class="n">machineId</span> <span class="o">&lt;&lt;</span> <span class="n">MACHINE_LEFT</span>             <span class="c1">//机器标识部分
+</span><span class="c1"></span>                <span class="o">|</span> <span class="n">sequence</span><span class="o">;</span>                             <span class="c1">//序列号部分
+</span><span class="c1"></span>    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">SnowFlakeShortUrl</span> <span class="n">snowFlake</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SnowFlakeShortUrl</span><span class="o">(</span><span class="n">2</span><span class="o">,</span> <span class="n">3</span><span class="o">);</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="o">(</span><span class="n">1</span> <span class="o">&lt;&lt;</span> <span class="n">4</span><span class="o">);</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="c1">//10进制
+</span><span class="c1"></span>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">snowFlake</span><span class="o">.</span><span class="na">nextId</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Throne Inheritance</title>
