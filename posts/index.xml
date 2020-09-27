@@ -6,8 +6,52 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Wed, 23 Sep 2020 03:19:36 +0900</lastBuildDate>
+		<lastBuildDate>Sun, 27 Sep 2020 13:13:01 +0900</lastBuildDate>
 		<atom:link href="https://jasonyangshadow.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Throne Inheritance</title>
+			<link>https://jasonyangshadow.github.io/posts/throne-inheritance/</link>
+			<pubDate>Sun, 27 Sep 2020 13:13:01 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/throne-inheritance/</guid>
+			<description>https://leetcode.com/contest/weekly-contest-208/problems/throne-inheritance/
+class ThroneInheritance: def __init__(self, kingName: str): self.kingName=kingName self.parentChild=defaultdict(list) self.deadMap={} self.order=[] def birth(self, parentName: str, childName: str) -&amp;gt; None: self.parentChild[parentName].append(childName) def death(self, name: str) -&amp;gt; None: self.deadMap[name]=1 def getInheritanceOrder(self) -&amp;gt; List[str]: self.order=[] self.printSuccessors(&amp;#34;king&amp;#34;) return self.order def printSuccessors(self,parent): if parent not in self.deadMap: self.order.append(parent) for i in self.parentChild[parent]: self.printSuccessors(i) # Your ThroneInheritance object will be instantiated and called as such: # obj = ThroneInheritance(kingName) # obj.birth(parentName,childName) # obj.death(name) # param_3 = obj.</description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/contest/weekly-contest-208/problems/throne-inheritance/">https://leetcode.com/contest/weekly-contest-208/problems/throne-inheritance/</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">ThroneInheritance</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kingName</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">kingName</span><span class="o">=</span><span class="n">kingName</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parentChild</span><span class="o">=</span><span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deadMap</span><span class="o">=</span><span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="o">=</span><span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">birth</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parentName</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">childName</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parentChild</span><span class="p">[</span><span class="n">parentName</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">childName</span><span class="p">)</span>
+        
+
+    <span class="k">def</span> <span class="nf">death</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deadMap</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+        
+    <span class="k">def</span> <span class="nf">getInheritanceOrder</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="o">=</span><span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">printSuccessors</span><span class="p">(</span><span class="s2">&#34;king&#34;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>
+    
+    <span class="k">def</span> <span class="nf">printSuccessors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">parent</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">parent</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">deadMap</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parentChild</span><span class="p">[</span><span class="n">parent</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">printSuccessors</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+
+<span class="c1"># Your ThroneInheritance object will be instantiated and called as such:</span>
+<span class="c1"># obj = ThroneInheritance(kingName)</span>
+<span class="c1"># obj.birth(parentName,childName)</span>
+<span class="c1"># obj.death(name)</span>
+<span class="c1"># param_3 = obj.getInheritanceOrder()</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Producer Consumer Condition</title>

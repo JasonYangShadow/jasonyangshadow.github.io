@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Mon, 21 Sep 2020 19:08:50 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 27 Sep 2020 13:13:01 +0900</lastBuildDate>
     
 	<atom:link href="https://jasonyangshadow.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Throne Inheritance</title>
+      <link>https://jasonyangshadow.github.io/posts/throne-inheritance/</link>
+      <pubDate>Sun, 27 Sep 2020 13:13:01 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/throne-inheritance/</guid>
+      <description>https://leetcode.com/contest/weekly-contest-208/problems/throne-inheritance/
+class ThroneInheritance: def __init__(self, kingName: str): self.kingName=kingName self.parentChild=defaultdict(list) self.deadMap={} self.order=[] def birth(self, parentName: str, childName: str) -&amp;gt; None: self.parentChild[parentName].append(childName) def death(self, name: str) -&amp;gt; None: self.deadMap[name]=1 def getInheritanceOrder(self) -&amp;gt; List[str]: self.order=[] self.printSuccessors(&amp;#34;king&amp;#34;) return self.order def printSuccessors(self,parent): if parent not in self.deadMap: self.order.append(parent) for i in self.parentChild[parent]: self.printSuccessors(i) # Your ThroneInheritance object will be instantiated and called as such: # obj = ThroneInheritance(kingName) # obj.birth(parentName,childName) # obj.death(name) # param_3 = obj.</description>
+    </item>
     
     <item>
       <title>Split a String Inot the Max Number of Unique Substrings</title>
@@ -105,19 +115,6 @@ Example 1: Input: nums = [3,10,5,25,2,8] Output: 28 Explanation: The maximum res
       <guid>https://jasonyangshadow.github.io/posts/sentence-screen-fitting/</guid>
       <description>https://leetcode.com/problems/sentence-screen-fitting/
 class Solution: def wordsTyping(self, sentence: List[str], rows: int, cols: int) -&amp;gt; int: strs = &amp;#34;&amp;#34; for s in sentence: strs += s + &amp;#34; &amp;#34; start = 0 for r in range(rows): start = start + cols if strs[start % len(strs)] == &amp;#34; &amp;#34;: start += 1 else: while start &amp;gt; 0 and strs[(start - 1) % len(strs)] != &amp;#34; &amp;#34;: start -= 1 return start // len(strs) </description>
-    </item>
-    
-    <item>
-      <title>Group Shifted Strings</title>
-      <link>https://jasonyangshadow.github.io/posts/group-shifted-strings/</link>
-      <pubDate>Wed, 16 Sep 2020 11:39:07 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/group-shifted-strings/</guid>
-      <description>Given a string, we can &amp;ldquo;shift&amp;rdquo; each of its letter to its successive letter, for example: &amp;ldquo;abc&amp;rdquo; -&amp;gt; &amp;ldquo;bcd&amp;rdquo;. We can keep &amp;ldquo;shifting&amp;rdquo; which forms the sequence:
-&amp;ldquo;abc&amp;rdquo; -&amp;gt; &amp;ldquo;bcd&amp;rdquo; -&amp;gt; &amp;hellip; -&amp;gt; &amp;ldquo;xyz&amp;rdquo;
-Given a list of non-empty strings which contains only lowercase alphabets, group all strings that belong to the same shifting sequence.
-Example:
-Input: [&amp;ldquo;abc&amp;rdquo;, &amp;ldquo;bcd&amp;rdquo;, &amp;ldquo;acef&amp;rdquo;, &amp;ldquo;xyz&amp;rdquo;, &amp;ldquo;az&amp;rdquo;, &amp;ldquo;ba&amp;rdquo;, &amp;ldquo;a&amp;rdquo;, &amp;ldquo;z&amp;rdquo;], Output: [ [&amp;ldquo;abc&amp;rdquo;,&amp;ldquo;bcd&amp;rdquo;,&amp;ldquo;xyz&amp;rdquo;], [&amp;ldquo;az&amp;rdquo;,&amp;ldquo;ba&amp;rdquo;], [&amp;ldquo;acef&amp;rdquo;], [&amp;ldquo;a&amp;rdquo;,&amp;ldquo;z&amp;rdquo;] ]</description>
     </item>
     
   </channel>

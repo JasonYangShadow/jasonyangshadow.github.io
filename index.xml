@@ -13,6 +13,16 @@
     
     
     <item>
+      <title>Throne Inheritance</title>
+      <link>https://jasonyangshadow.github.io/posts/throne-inheritance/</link>
+      <pubDate>Sun, 27 Sep 2020 13:13:01 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/throne-inheritance/</guid>
+      <description>https://leetcode.com/contest/weekly-contest-208/problems/throne-inheritance/
+class ThroneInheritance: def __init__(self, kingName: str): self.kingName=kingName self.parentChild=defaultdict(list) self.deadMap={} self.order=[] def birth(self, parentName: str, childName: str) -&amp;gt; None: self.parentChild[parentName].append(childName) def death(self, name: str) -&amp;gt; None: self.deadMap[name]=1 def getInheritanceOrder(self) -&amp;gt; List[str]: self.order=[] self.printSuccessors(&amp;#34;king&amp;#34;) return self.order def printSuccessors(self,parent): if parent not in self.deadMap: self.order.append(parent) for i in self.parentChild[parent]: self.printSuccessors(i) # Your ThroneInheritance object will be instantiated and called as such: # obj = ThroneInheritance(kingName) # obj.birth(parentName,childName) # obj.death(name) # param_3 = obj.</description>
+    </item>
+    
+    <item>
       <title>Producer Consumer Condition</title>
       <link>https://jasonyangshadow.github.io/posts/producer-consumer-condition/</link>
       <pubDate>Wed, 23 Sep 2020 03:19:36 +0900</pubDate>
@@ -104,16 +114,6 @@ Example 1: Input: nums = [3,10,5,25,2,8] Output: 28 Explanation: The maximum res
       
       <guid>https://jasonyangshadow.github.io/posts/number-of-islands-2/</guid>
       <description>A 2d grid map of m rows and n columns is initially filled with water. We may perform an addLand operation which turns the water at position (row, col) into a land. Given a list of positions to operate, count the number of islands after each addLand operation. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</description>
-    </item>
-    
-    <item>
-      <title>Sentence Screen Fitting</title>
-      <link>https://jasonyangshadow.github.io/posts/sentence-screen-fitting/</link>
-      <pubDate>Wed, 16 Sep 2020 11:41:03 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/sentence-screen-fitting/</guid>
-      <description>https://leetcode.com/problems/sentence-screen-fitting/
-class Solution: def wordsTyping(self, sentence: List[str], rows: int, cols: int) -&amp;gt; int: strs = &amp;#34;&amp;#34; for s in sentence: strs += s + &amp;#34; &amp;#34; start = 0 for r in range(rows): start = start + cols if strs[start % len(strs)] == &amp;#34; &amp;#34;: start += 1 else: while start &amp;gt; 0 and strs[(start - 1) % len(strs)] != &amp;#34; &amp;#34;: start -= 1 return start // len(strs) </description>
     </item>
     
   </channel>
