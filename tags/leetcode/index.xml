@@ -7,10 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 27 Sep 2020 13:13:01 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 29 Sep 2020 01:13:42 +0900</lastBuildDate>
     
 	<atom:link href="https://jasonyangshadow.github.io/tags/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Replace Elements With Greatest Element on the Right Side</title>
+      <link>https://jasonyangshadow.github.io/posts/replace-elements-with-greatest-element-on-the-right-side/</link>
+      <pubDate>Tue, 29 Sep 2020 01:13:42 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/replace-elements-with-greatest-element-on-the-right-side/</guid>
+      <description>Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.
+After doing so, return the array.
+Example 1:
+Input: arr = [17,18,5,4,6,1] Output: [18,6,6,6,1,-1]
+Constraints:
+1 &amp;lt;= arr.length &amp;lt;= 10^4 1 &amp;lt;= arr[i] &amp;lt;= 10^5
+class Solution: def replaceElements(self, arr: List[int]) -&amp;gt; List[int]: mx = -1 for i in range(len(arr) - 1, -1, -1): arr[i], mx = mx, max(arr[i], mx) return arr </description>
+    </item>
+    
+    <item>
+      <title>N Ary Tree Postorder Traversal</title>
+      <link>https://jasonyangshadow.github.io/posts/n-ary-tree-postorder-traversal/</link>
+      <pubDate>Tue, 29 Sep 2020 01:03:59 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/n-ary-tree-postorder-traversal/</guid>
+      <description>https://leetcode.com/problems/n-ary-tree-postorder-traversal/
+&amp;#34;&amp;#34;&amp;#34; # Definition for a Node. class Node: def __init__(self, val=None, children=None): self.val = val self.children = children &amp;#34;&amp;#34;&amp;#34; class Solution: def postorder(self, root: &amp;#39;Node&amp;#39;) -&amp;gt; List[int]: res = [] if not root: return res q = [root] while q: cur = q.pop() res.append(cur.val) q += cur.children return res[::-1] &amp;#34;&amp;#34;&amp;#34; # Definition for a Node. class Node: def __init__(self, val=None, children=None): self.val = val self.children = children &amp;#34;&amp;#34;&amp;#34; class Solution: def postorder(self, root: &amp;#39;Node&amp;#39;) -&amp;gt; List[int]: res = [] if not root: return res def helper(root, res): if not root: return for x in root.</description>
+    </item>
     
     <item>
       <title>Throne Inheritance</title>
@@ -96,25 +121,6 @@ Example 1: Input: nums = [3,10,5,25,2,8] Output: 28 Explanation: The maximum res
       <guid>https://jasonyangshadow.github.io/posts/sum-of-root-to-leaf-binary-numbers/</guid>
       <description>https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
 # Definition for a binary tree node. # class TreeNode: # def __init__(self, val=0, left=None, right=None): # self.val = val # self.left = left # self.right = right class Solution: def sumRootToLeaf(self, root: TreeNode) -&amp;gt; int: root_to_leaf = 0 stack = [(root, 0)] while stack: root, curr_num = stack.pop() if root is not None: curr_num = (curr_num&amp;lt;&amp;lt;1) | root.val if root.left is None and root.right is None: root_to_leaf += curr_num else: stack.</description>
-    </item>
-    
-    <item>
-      <title>Number of Islands 2</title>
-      <link>https://jasonyangshadow.github.io/posts/number-of-islands-2/</link>
-      <pubDate>Thu, 17 Sep 2020 12:52:38 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/number-of-islands-2/</guid>
-      <description>A 2d grid map of m rows and n columns is initially filled with water. We may perform an addLand operation which turns the water at position (row, col) into a land. Given a list of positions to operate, count the number of islands after each addLand operation. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</description>
-    </item>
-    
-    <item>
-      <title>Sentence Screen Fitting</title>
-      <link>https://jasonyangshadow.github.io/posts/sentence-screen-fitting/</link>
-      <pubDate>Wed, 16 Sep 2020 11:41:03 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/sentence-screen-fitting/</guid>
-      <description>https://leetcode.com/problems/sentence-screen-fitting/
-class Solution: def wordsTyping(self, sentence: List[str], rows: int, cols: int) -&amp;gt; int: strs = &amp;#34;&amp;#34; for s in sentence: strs += s + &amp;#34; &amp;#34; start = 0 for r in range(rows): start = start + cols if strs[start % len(strs)] == &amp;#34; &amp;#34;: start += 1 else: while start &amp;gt; 0 and strs[(start - 1) % len(strs)] != &amp;#34; &amp;#34;: start -= 1 return start // len(strs) </description>
     </item>
     
   </channel>

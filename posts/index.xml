@@ -6,8 +6,93 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Mon, 28 Sep 2020 02:25:13 +0900</lastBuildDate>
+		<lastBuildDate>Tue, 29 Sep 2020 01:13:42 +0900</lastBuildDate>
 		<atom:link href="https://jasonyangshadow.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Replace Elements With Greatest Element on the Right Side</title>
+			<link>https://jasonyangshadow.github.io/posts/replace-elements-with-greatest-element-on-the-right-side/</link>
+			<pubDate>Tue, 29 Sep 2020 01:13:42 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/replace-elements-with-greatest-element-on-the-right-side/</guid>
+			<description>Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.
+After doing so, return the array.
+Example 1:
+Input: arr = [17,18,5,4,6,1] Output: [18,6,6,6,1,-1]
+Constraints:
+1 &amp;lt;= arr.length &amp;lt;= 10^4 1 &amp;lt;= arr[i] &amp;lt;= 10^5
+class Solution: def replaceElements(self, arr: List[int]) -&amp;gt; List[int]: mx = -1 for i in range(len(arr) - 1, -1, -1): arr[i], mx = mx, max(arr[i], mx) return arr </description>
+			<content type="html"><![CDATA[<p>Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.</p>
+<p>After doing so, return the array.</p>
+<p>Example 1:</p>
+<p>Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]</p>
+<p>Constraints:</p>
+<p>1 &lt;= arr.length &lt;= 10^4
+1 &lt;= arr[i] &lt;= 10^5</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">replaceElements</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arr</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">mx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">mx</span> <span class="o">=</span> <span class="n">mx</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">mx</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">arr</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>N Ary Tree Postorder Traversal</title>
+			<link>https://jasonyangshadow.github.io/posts/n-ary-tree-postorder-traversal/</link>
+			<pubDate>Tue, 29 Sep 2020 01:03:59 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/n-ary-tree-postorder-traversal/</guid>
+			<description>https://leetcode.com/problems/n-ary-tree-postorder-traversal/
+&amp;#34;&amp;#34;&amp;#34; # Definition for a Node. class Node: def __init__(self, val=None, children=None): self.val = val self.children = children &amp;#34;&amp;#34;&amp;#34; class Solution: def postorder(self, root: &amp;#39;Node&amp;#39;) -&amp;gt; List[int]: res = [] if not root: return res q = [root] while q: cur = q.pop() res.append(cur.val) q += cur.children return res[::-1] &amp;#34;&amp;#34;&amp;#34; # Definition for a Node. class Node: def __init__(self, val=None, children=None): self.val = val self.children = children &amp;#34;&amp;#34;&amp;#34; class Solution: def postorder(self, root: &amp;#39;Node&amp;#39;) -&amp;gt; List[int]: res = [] if not root: return res def helper(root, res): if not root: return for x in root.</description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/problems/n-ary-tree-postorder-traversal/">https://leetcode.com/problems/n-ary-tree-postorder-traversal/</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="s2">&#34;&#34;&#34;
+</span><span class="s2"># Definition for a Node.
+</span><span class="s2">class Node:
+</span><span class="s2">    def __init__(self, val=None, children=None):
+</span><span class="s2">        self.val = val
+</span><span class="s2">        self.children = children
+</span><span class="s2">&#34;&#34;&#34;</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">postorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="s1">&#39;Node&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res</span>
+        
+        <span class="n">q</span> <span class="o">=</span> <span class="p">[</span><span class="n">root</span><span class="p">]</span>
+        <span class="k">while</span> <span class="n">q</span><span class="p">:</span>
+            <span class="n">cur</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+            <span class="n">q</span> <span class="o">+=</span> <span class="n">cur</span><span class="o">.</span><span class="n">children</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="s2">&#34;&#34;&#34;
+</span><span class="s2"># Definition for a Node.
+</span><span class="s2">class Node:
+</span><span class="s2">    def __init__(self, val=None, children=None):
+</span><span class="s2">        self.val = val
+</span><span class="s2">        self.children = children
+</span><span class="s2">&#34;&#34;&#34;</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">postorder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="s1">&#39;Node&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">res</span>
+        
+        <span class="k">def</span> <span class="nf">helper</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">root</span><span class="p">:</span>
+                <span class="k">return</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">root</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                <span class="n">helper</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+            <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">root</span><span class="o">.</span><span class="n">val</span><span class="p">)</span>
+        
+        <span class="n">helper</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">res</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Snow Flake Id</title>
