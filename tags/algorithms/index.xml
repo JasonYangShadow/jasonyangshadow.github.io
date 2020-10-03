@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 29 Sep 2020 01:13:42 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 04 Oct 2020 03:33:24 +0900</lastBuildDate>
     
 	<atom:link href="https://jasonyangshadow.github.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Find Servers That Handled Most Number of Requests</title>
+      <link>https://jasonyangshadow.github.io/posts/find-servers-that-handled-most-number-of-requests/</link>
+      <pubDate>Sun, 04 Oct 2020 03:33:24 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/find-servers-that-handled-most-number-of-requests/</guid>
+      <description>https://leetcode.com/contest/biweekly-contest-36/problems/find-servers-that-handled-most-number-of-requests/
+A TLE version:
+class Solution: def busiestServers(self, k: int, arrival: List[int], load: List[int]) -&amp;gt; List[int]: endtime = [0]*k count = [0]*k for aidx, (a, l) in enumerate(zip(arrival, load)): serveridx = aidx % k if endtime[serveridx] &amp;lt;= a: endtime[serveridx] = a + l count[serveridx] += 1 else: nextserveridx = (serveridx + 1) % k while nextserveridx != serveridx: if endtime[nextserveridx] &amp;lt;= a: endtime[nextserveridx] = a + l count[nextserveridx] += 1 break else: nextserveridx = (nextserveridx + 1) % k max_ = max(count) ans = [] for i in range(k): if count[i] == max_: ans.</description>
+    </item>
+    
+    <item>
+      <title>Find Valid Matrix Given Row Column Sums</title>
+      <link>https://jasonyangshadow.github.io/posts/find-valid-matrix-given-row-column-sums/</link>
+      <pubDate>Sun, 04 Oct 2020 02:33:25 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/find-valid-matrix-given-row-column-sums/</guid>
+      <description>You are given two arrays rowSum and colSum of non-negative integers where rowSum[i] is the sum of the elements in the ith row and colSum[j] is the sum of the elements of the jth column of a 2D matrix. In other words, you do not know the elements of the matrix, but you do know the sums of each row and column.
+Find any matrix of non-negative integers of size rowSum.</description>
+    </item>
     
     <item>
       <title>Replace Elements With Greatest Element on the Right Side</title>
@@ -100,25 +121,6 @@ class Solution: def uniquePaths(self, m: int, n: int) -&amp;gt; int: def helper(
       <description>Given an integer array nums, return the maximum result of nums[i] XOR nums[j], where 0 ≤ i ≤ j &amp;lt; n.
 Follow up: Could you do this in O(n) runtime?
 Example 1: Input: nums = [3,10,5,25,2,8] Output: 28 Explanation: The maximum result is 5 XOR 25 = 28. Example 2: Input: nums = [0] Output: 0 Example 3: Input: nums = [2,4] Output: 6 Example 4: Input: nums = [8,10,2] Output: 10 Example 5: Input: nums = [14,70,53,83,49,91,36,80,92,51,66,70] Output: 127 Constraints: 1 &amp;lt;= nums.</description>
-    </item>
-    
-    <item>
-      <title>Sum of Root to Leaf Binary Numbers</title>
-      <link>https://jasonyangshadow.github.io/posts/sum-of-root-to-leaf-binary-numbers/</link>
-      <pubDate>Fri, 18 Sep 2020 00:57:03 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/sum-of-root-to-leaf-binary-numbers/</guid>
-      <description>https://leetcode.com/problems/sum-of-root-to-leaf-binary-numbers/
-# Definition for a binary tree node. # class TreeNode: # def __init__(self, val=0, left=None, right=None): # self.val = val # self.left = left # self.right = right class Solution: def sumRootToLeaf(self, root: TreeNode) -&amp;gt; int: root_to_leaf = 0 stack = [(root, 0)] while stack: root, curr_num = stack.pop() if root is not None: curr_num = (curr_num&amp;lt;&amp;lt;1) | root.val if root.left is None and root.right is None: root_to_leaf += curr_num else: stack.</description>
-    </item>
-    
-    <item>
-      <title>Number of Islands 2</title>
-      <link>https://jasonyangshadow.github.io/posts/number-of-islands-2/</link>
-      <pubDate>Thu, 17 Sep 2020 12:52:38 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/number-of-islands-2/</guid>
-      <description>A 2d grid map of m rows and n columns is initially filled with water. We may perform an addLand operation which turns the water at position (row, col) into a land. Given a list of positions to operate, count the number of islands after each addLand operation. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.</description>
     </item>
     
   </channel>

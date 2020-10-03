@@ -13,6 +13,27 @@
     
     
     <item>
+      <title>Find Servers That Handled Most Number of Requests</title>
+      <link>https://jasonyangshadow.github.io/posts/find-servers-that-handled-most-number-of-requests/</link>
+      <pubDate>Sun, 04 Oct 2020 03:33:24 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/find-servers-that-handled-most-number-of-requests/</guid>
+      <description>https://leetcode.com/contest/biweekly-contest-36/problems/find-servers-that-handled-most-number-of-requests/
+A TLE version:
+class Solution: def busiestServers(self, k: int, arrival: List[int], load: List[int]) -&amp;gt; List[int]: endtime = [0]*k count = [0]*k for aidx, (a, l) in enumerate(zip(arrival, load)): serveridx = aidx % k if endtime[serveridx] &amp;lt;= a: endtime[serveridx] = a + l count[serveridx] += 1 else: nextserveridx = (serveridx + 1) % k while nextserveridx != serveridx: if endtime[nextserveridx] &amp;lt;= a: endtime[nextserveridx] = a + l count[nextserveridx] += 1 break else: nextserveridx = (nextserveridx + 1) % k max_ = max(count) ans = [] for i in range(k): if count[i] == max_: ans.</description>
+    </item>
+    
+    <item>
+      <title>Find Valid Matrix Given Row Column Sums</title>
+      <link>https://jasonyangshadow.github.io/posts/find-valid-matrix-given-row-column-sums/</link>
+      <pubDate>Sun, 04 Oct 2020 02:33:25 +0900</pubDate>
+      
+      <guid>https://jasonyangshadow.github.io/posts/find-valid-matrix-given-row-column-sums/</guid>
+      <description>You are given two arrays rowSum and colSum of non-negative integers where rowSum[i] is the sum of the elements in the ith row and colSum[j] is the sum of the elements of the jth column of a 2D matrix. In other words, you do not know the elements of the matrix, but you do know the sums of each row and column.
+Find any matrix of non-negative integers of size rowSum.</description>
+    </item>
+    
+    <item>
       <title>Replace Elements With Greatest Element on the Right Side</title>
       <link>https://jasonyangshadow.github.io/posts/replace-elements-with-greatest-element-on-the-right-side/</link>
       <pubDate>Tue, 29 Sep 2020 01:13:42 +0900</pubDate>
@@ -97,27 +118,6 @@ class Solution: def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]
 The graph is given as follows: the nodes are 0, 1, &amp;hellip;, graph.length - 1. graph[i] is a list of all nodes j for which the edge (i, j) exists.
 Example: Input: [[1,2],[3],[3],[]] Output: [[0,1,3],[0,2,3]] Explanation: The graph looks like this:
 0---&amp;gt;1 | | v v 2---&amp;gt;3 There are two paths: 0 -&amp;gt; 1 -&amp;gt; 3 and 0 -&amp;gt; 2 -&amp;gt; 3.</description>
-    </item>
-    
-    <item>
-      <title>Unique Paths</title>
-      <link>https://jasonyangshadow.github.io/posts/unique-paths/</link>
-      <pubDate>Mon, 21 Sep 2020 15:46:59 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/unique-paths/</guid>
-      <description>https://leetcode.com/problems/unique-paths/
-Recursive methods, will get TLE when m, n becomes larger
-class Solution: def uniquePaths(self, m: int, n: int) -&amp;gt; int: def helper(i, j): if i &amp;lt; 0 or j &amp;lt; 0: return 0 if i == 0 or j == 0: return 1 return helper(i - 1, j) + helper(i, j - 1) return helper(m-1, n -1) class Solution: def uniquePaths(self, m: int, n: int) -&amp;gt; int: aux = [[1]*n for _ in range(m)] for i in range(1, m): for j in range(1, n): aux[i][j] = aux[i-1][j] + aux[i][j-1] return aux[-1][-1] </description>
-    </item>
-    
-    <item>
-      <title>Maximum Non Negative Product in a Matrix</title>
-      <link>https://jasonyangshadow.github.io/posts/maximum-non-negative-product-in-a-matrix/</link>
-      <pubDate>Mon, 21 Sep 2020 15:09:47 +0900</pubDate>
-      
-      <guid>https://jasonyangshadow.github.io/posts/maximum-non-negative-product-in-a-matrix/</guid>
-      <description>You are given a rows x cols matrix grid. Initially, you are located at the top-left corner (0, 0), and in each step, you can only move right or down in the matrix.
-Among all possible paths starting from the top-left corner (0, 0) and ending in the bottom-right corner (rows - 1, cols - 1), find the path with the maximum non-negative product. The product of a path is the product of all integers in the grid cells visited along the path.</description>
     </item>
     
   </channel>

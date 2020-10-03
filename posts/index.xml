@@ -6,8 +6,181 @@
 		<generator>Hugo -- gohugo.io</generator>
 		<language>en-us</language>
 		<copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-		<lastBuildDate>Tue, 29 Sep 2020 01:13:42 +0900</lastBuildDate>
+		<lastBuildDate>Sun, 04 Oct 2020 03:33:24 +0900</lastBuildDate>
 		<atom:link href="https://jasonyangshadow.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+		
+		<item>
+			<title>Find Servers That Handled Most Number of Requests</title>
+			<link>https://jasonyangshadow.github.io/posts/find-servers-that-handled-most-number-of-requests/</link>
+			<pubDate>Sun, 04 Oct 2020 03:33:24 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/find-servers-that-handled-most-number-of-requests/</guid>
+			<description>https://leetcode.com/contest/biweekly-contest-36/problems/find-servers-that-handled-most-number-of-requests/
+A TLE version:
+class Solution: def busiestServers(self, k: int, arrival: List[int], load: List[int]) -&amp;gt; List[int]: endtime = [0]*k count = [0]*k for aidx, (a, l) in enumerate(zip(arrival, load)): serveridx = aidx % k if endtime[serveridx] &amp;lt;= a: endtime[serveridx] = a + l count[serveridx] += 1 else: nextserveridx = (serveridx + 1) % k while nextserveridx != serveridx: if endtime[nextserveridx] &amp;lt;= a: endtime[nextserveridx] = a + l count[nextserveridx] += 1 break else: nextserveridx = (nextserveridx + 1) % k max_ = max(count) ans = [] for i in range(k): if count[i] == max_: ans.</description>
+			<content type="html"><![CDATA[<p><a href="https://leetcode.com/contest/biweekly-contest-36/problems/find-servers-that-handled-most-number-of-requests/">https://leetcode.com/contest/biweekly-contest-36/problems/find-servers-that-handled-most-number-of-requests/</a></p>
+<p>A TLE version:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">busiestServers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">arrival</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">load</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
+        <span class="n">endtime</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">k</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">k</span>
+        
+        <span class="k">for</span> <span class="n">aidx</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">l</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">arrival</span><span class="p">,</span> <span class="n">load</span><span class="p">)):</span>
+            <span class="n">serveridx</span> <span class="o">=</span> <span class="n">aidx</span> <span class="o">%</span> <span class="n">k</span>
+            <span class="k">if</span> <span class="n">endtime</span><span class="p">[</span><span class="n">serveridx</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">:</span>
+                <span class="n">endtime</span><span class="p">[</span><span class="n">serveridx</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">l</span>
+                <span class="n">count</span><span class="p">[</span><span class="n">serveridx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">nextserveridx</span> <span class="o">=</span> <span class="p">(</span><span class="n">serveridx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">k</span>
+                <span class="k">while</span> <span class="n">nextserveridx</span> <span class="o">!=</span> <span class="n">serveridx</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">endtime</span><span class="p">[</span><span class="n">nextserveridx</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">a</span><span class="p">:</span>
+                        <span class="n">endtime</span><span class="p">[</span><span class="n">nextserveridx</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">l</span>
+                        <span class="n">count</span><span class="p">[</span><span class="n">nextserveridx</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="k">break</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">nextserveridx</span> <span class="o">=</span> <span class="p">(</span><span class="n">nextserveridx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="n">k</span>
+        
+        <span class="n">max_</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">count</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">max_</span><span class="p">:</span>
+                <span class="n">ans</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">busiestServers</span><span class="o">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">arrival</span><span class="o">,</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">load</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">counter</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">k</span><span class="o">];</span>
+        <span class="c1">// use a tree to track available servers
+</span><span class="c1"></span>        <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">available</span> <span class="o">=</span> <span class="k">new</span> <span class="n">TreeSet</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="n">k</span><span class="o">;</span> <span class="n">num</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">available</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">num</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="c1">// use a PQ to maintain the availability at current arrival time
+</span><span class="c1"></span>        <span class="n">Queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">[]&gt;</span> <span class="n">busyServers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PriorityQueue</span><span class="o">&lt;&gt;((</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)-&gt;(</span><span class="n">a</span><span class="o">[</span><span class="n">0</span><span class="o">]</span> <span class="o">-</span> <span class="n">b</span><span class="o">[</span><span class="n">0</span><span class="o">]));</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">arrival</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">idx</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">curTime</span> <span class="o">=</span> <span class="n">arrival</span><span class="o">[</span><span class="n">idx</span><span class="o">];</span>
+            <span class="kt">int</span> <span class="n">endTime</span> <span class="o">=</span> <span class="n">curTime</span> <span class="o">+</span> <span class="n">load</span><span class="o">[</span><span class="n">idx</span><span class="o">];</span>
+            <span class="k">while</span> <span class="o">(!</span><span class="n">busyServers</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">&amp;&amp;</span> <span class="n">busyServers</span><span class="o">.</span><span class="na">peek</span><span class="o">()[</span><span class="n">0</span><span class="o">]</span> <span class="o">&lt;=</span> <span class="n">curTime</span><span class="o">)</span> <span class="o">{</span>
+                <span class="kt">int</span> <span class="n">freedServer</span> <span class="o">=</span> <span class="n">busyServers</span><span class="o">.</span><span class="na">poll</span><span class="o">()[</span><span class="n">1</span><span class="o">];</span>
+                <span class="n">available</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">freedServer</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">available</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="k">continue</span><span class="o">;</span> <span class="c1">// all busy
+</span><span class="c1"></span>            <span class="n">Integer</span> <span class="n">assignNum</span> <span class="o">=</span> <span class="n">available</span><span class="o">.</span><span class="na">ceiling</span><span class="o">(</span><span class="n">idx</span> <span class="o">%</span> <span class="n">k</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">assignNum</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">assignNum</span> <span class="o">=</span> <span class="n">available</span><span class="o">.</span><span class="na">first</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="n">counter</span><span class="o">[</span><span class="n">assignNum</span><span class="o">]++;</span>
+            <span class="n">available</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">assignNum</span><span class="o">);</span>
+            <span class="n">busyServers</span><span class="o">.</span><span class="na">offer</span><span class="o">(</span><span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="n">endTime</span><span class="o">,</span> <span class="n">assignNum</span><span class="o">});</span>
+        <span class="o">}</span>
+        
+        <span class="k">return</span> <span class="n">findMaxesInCounter</span><span class="o">(</span><span class="n">counter</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    
+    
+    <span class="kd">private</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">findMaxesInCounter</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">counter</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">counter</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">max</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">max</span><span class="o">,</span> <span class="n">counter</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+        <span class="o">}</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">counter</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">counter</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">max</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">result</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>]]></content>
+		</item>
+		
+		<item>
+			<title>Find Valid Matrix Given Row Column Sums</title>
+			<link>https://jasonyangshadow.github.io/posts/find-valid-matrix-given-row-column-sums/</link>
+			<pubDate>Sun, 04 Oct 2020 02:33:25 +0900</pubDate>
+			
+			<guid>https://jasonyangshadow.github.io/posts/find-valid-matrix-given-row-column-sums/</guid>
+			<description>You are given two arrays rowSum and colSum of non-negative integers where rowSum[i] is the sum of the elements in the ith row and colSum[j] is the sum of the elements of the jth column of a 2D matrix. In other words, you do not know the elements of the matrix, but you do know the sums of each row and column.
+Find any matrix of non-negative integers of size rowSum.</description>
+			<content type="html"><![CDATA[<p>You are given two arrays rowSum and colSum of non-negative integers where rowSum[i] is the sum of the elements in the ith row and colSum[j] is the sum of the elements of the jth column of a 2D matrix. In other words, you do not know the elements of the matrix, but you do know the sums of each row and column.</p>
+<p>Find any matrix of non-negative integers of size rowSum.length x colSum.length that satisfies the rowSum and colSum requirements.</p>
+<p>Return a 2D array representing any matrix that fulfills the requirements. It&rsquo;s guaranteed that at least one matrix that fulfills the requirements exists.</p>
+<p>Example 1:</p>
+<p>Input: rowSum = [3,8], colSum = [4,7]
+Output: [[3,0],
+[1,7]]
+Explanation:
+0th row: 3 + 0 = 0 == rowSum[0]
+1st row: 1 + 7 = 8 == rowSum[1]
+0th column: 3 + 1 = 4 == colSum[0]
+1st column: 0 + 7 = 7 == colSum[1]
+The row and column sums match, and all matrix elements are non-negative.
+Another possible matrix is: [[1,2],
+[3,5]]
+Example 2:</p>
+<p>Input: rowSum = [5,7,10], colSum = [8,6,8]
+Output: [[0,5,0],
+[6,1,0],
+[2,0,8]]
+Example 3:</p>
+<p>Input: rowSum = [14,9], colSum = [6,9,8]
+Output: [[0,9,5],
+[6,0,3]]
+Example 4:</p>
+<p>Input: rowSum = [1,0], colSum = [1]
+Output: [[1],
+[0]]
+Example 5:</p>
+<p>Input: rowSum = [0], colSum = [0]
+Output: [[0]]</p>
+<p>Constraints:</p>
+<p>1 &lt;= rowSum.length, colSum.length &lt;= 500
+0 &lt;= rowSum[i], colSum[i] &lt;= 108
+sum(rows) == sum(columns)</p>
+<p>Solution:</p>
+<pre><code>Intuition
+The greedy pick won't break anything, so just take as much as possible.
+
+
+Explanation
+For each result value at A[i][j],
+we greedily take the min(row[i], col[j]).
+
+Then we update the row sum and col sum:
+row[i] -= A[i][j]
+col[j] -= A[i][j]
+
+
+Easy Prove
+A[i][j] will clear either row[i] or col[j],
+that means either row[i] == 0 and col[j] == 0 in the end.
+
+&quot;It's guaranteed that at least one matrix that fulfills the requirements exists.&quot;
+Also sum(row) == sum(col) always valid.
+
+After 1) and 2), we can have that sum(row) == sum(col) == 0 in the end.
+That mean we find a right answer.
+
+Done.
+
+
+Solution 1
+Time O(mn)
+Space O(mn)
+</code></pre><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python">    <span class="k">def</span> <span class="nf">restoreMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">):</span>
+        <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">m</span><span class="p">)]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">col</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+                <span class="n">row</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">col</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">A</span>
+</code></pre></div>]]></content>
+		</item>
 		
 		<item>
 			<title>Replace Elements With Greatest Element on the Right Side</title>
